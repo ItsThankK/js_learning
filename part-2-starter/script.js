@@ -36,3 +36,12 @@ function letMyName(myName) {
 }
 
 letMyName("Elon Musk");
+
+// Arrays
+const friends = ["Micheal", "Steven", "Peter"];
+
+const firstFriend = friends[2];
+console.log(firstFriend);
+
+const years = new Array(1990, 2020, "Lean");
+console.log(years[2]);
