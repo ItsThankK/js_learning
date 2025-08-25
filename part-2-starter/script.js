@@ -85,3 +85,6 @@ for (let rep = 0; rep < array.length; rep++) {
 // continue and break statements
 // It continue (skips) if the condition is met
 // It breaks (terminates) the whole iteration loop
+
+//while loop
+// while keeps working when the conditions are true
