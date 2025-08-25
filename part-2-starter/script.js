@@ -32,7 +32,6 @@ function callMe(myName) {
 function letMyName(myName) {
   let result = callMe(myName);
   console.log(result);
-  
 }
 
 letMyName("Elon Musk");
@@ -45,3 +44,19 @@ console.log(firstFriend);
 
 const years = new Array(1990, 2020, "Lean");
 console.log(years[2]);
+
+// Objects
+const jonas = {
+  firstName: "jonas",
+  lastName: "jonas-2",
+  age: 22,
+  job: "tutor",
+  friends: ["f1", "f2", "f2"],
+};
+
+console.log(jonas.friends[2]);
+
+const interstedIn = prompt("What do you want to know about jonas?");
+console.log(jonas[interstedIn]);
+
+
