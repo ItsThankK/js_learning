@@ -117,3 +117,38 @@ h1 {
 .label-score {
   margin-bottom: 2rem;
 }
+
+.modal-section {
+  height: 100vh;
+  background-color: wheat;
+}
+
+.modal-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.modal-btns {
+ display: flex;
+ justify-content: space-between;
+ padding: 30px;
+}
+
+.m-btn {
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+}
+
+.modal-content {
+  width: 70%;
+  height: auto;
+  border: 2px green solid;
+  margin: 20px auto;
+}
+
+.modal-content p {
+  font-size: 16px;
+  padding: 20px;
+  background-color: black;
+}
