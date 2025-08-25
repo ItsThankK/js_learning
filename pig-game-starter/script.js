@@ -13,9 +13,19 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add("hidden");
 
+let currentScore = 0;
+
 //Rolling dice functionality
 btnNRoll.addEventListener("click", function() {
   diceEl.classList.remove("hidden");
   let dice = Math.floor(Math.random() * 6) + 1;
   diceEl.src = `dice-${dice}.png`;
+
+  // Check for rolled 1
+  if(dice !== 1) {
+    //Keep playing & add dice to current score
+    currentScore += dice;
+  } else {
+    //Switch to the other player
+  }
 });
