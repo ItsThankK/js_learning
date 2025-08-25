@@ -1,5 +1,5 @@
 "use strict";
-
+/*
 function logger() {
   console.log("I am a logger function");
 }
@@ -55,8 +55,29 @@ const jonas = {
 };
 
 console.log(jonas.friends[2]);
+*/
 
-const interstedIn = prompt("What do you want to know about jonas?");
-console.log(jonas[interstedIn]);
+// const interstedIn = prompt("What do you want to know about jonas?");
+// console.log(jonas[interstedIn]);
 
+// Object methods
+const jonas2 = {
+  firstName: "jonas2",
+  lastName: "jonas2.2",
+  birthYear: 2000,
+  job: "frontend dev",
+  friends: ["auditor", "web3", "backend"],
+  hasId: true,
+  calAge: function (birthYear) {
+    return 2025 - birthYear;
+  },
+};
 
+console.log(jonas2.calAge(jonas2.birthYear));
+
+// Loop iteration
+const array = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
+for (let rep = 0; rep < array.length; rep++) {
+  const element = array[rep];
+  console.log(element);
+}
