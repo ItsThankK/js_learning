@@ -43,3 +43,5 @@ if (isOldEnough) {
   const ageLeft = 18 - idealAge;
   console.log("Age left is " + ageLeft + " years");
 }
+
+
