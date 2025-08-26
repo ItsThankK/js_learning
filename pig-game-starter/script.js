@@ -30,6 +30,7 @@ function switchPlayer() {
   activePlayer = activePlayer === 0 ? 1 : 0;
   player0El.classList.toggle('player--active');
   player1El.classList.toggle('player--active');
+  currentScore = 0;
 }
 
 function restartGameAnimation() {
@@ -66,7 +67,7 @@ btnHold.addEventListener('click', function () {
     currentScore = 0;
     document.getElementById(`current--${activePlayer}`).textContent = 0;
 
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 10) {
       //End the game session
       document
         .querySelector(`.player--${activePlayer}`)
