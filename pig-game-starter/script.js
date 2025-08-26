@@ -18,6 +18,7 @@ const btnHold = document.querySelector('.btn--hold');
 score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden');
+restart.classList.add('hidden');
 
 const scores = [0, 0];
 let currentScore = 0;
@@ -31,10 +32,13 @@ function switchPlayer() {
   player1El.classList.toggle('player--active');
 }
 
+function restartGameAnimation() {
+  restart.classList.remove('hidden');
+}
+
 //Rolling dice functionality
 btnNRoll.addEventListener('click', function () {
   if (playing) {
-    restart.classList.add('hidden');
     diceEl.classList.remove('hidden');
     let dice = Math.floor(Math.random() * 6) + 1;
     diceEl.src = `dice-${dice}.png`;
@@ -44,19 +48,18 @@ btnNRoll.addEventListener('click', function () {
       //Keep playing & add dice to current score
       currentScore += dice;
       document.getElementById(`current--${activePlayer}`).textContent =
-        currentScore; 
+        currentScore;
     } else {
       //Switch to the other player
       switchPlayer();
     }
   } else {
-    restart.classList.remove('hidden');
+    restartGameAnimation();
   }
 });
 
 btnHold.addEventListener('click', function () {
   if (playing) {
-    restart.classList.add('hidden');
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
@@ -71,11 +74,11 @@ btnHold.addEventListener('click', function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
-        playing = false;
+      playing = false;
     } else {
       switchPlayer();
     }
   } else {
-    restart.classList.remove('hidden');
+    restartGameAnimation();
   }
 });
