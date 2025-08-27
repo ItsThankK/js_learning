@@ -45,6 +45,10 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here's your pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
+  orderPizza: function(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 
   openingHours: {
     thu: {
@@ -106,6 +110,8 @@ const add = function (...numbers) {
   console.log(result);
 };
 add(2,3,5);
+
+restaurant.orderPizza("cheese", 4, 6, 7);
 
 /*
 // The spread operator
