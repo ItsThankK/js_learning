@@ -75,8 +75,23 @@ restaurant.orderPasta(...ingredients);
 */
 
 //Objects as iterables in es 2018
-const newRestaurant = { foundingYear: "2010", ...restaurant, founder: "Jonas"};
+const newRestaurant = { foundingYear: '2010', ...restaurant, founder: 'Jonas' };
 console.log(newRestaurant.foundingYear);
+
+// REST pattern & parameter
+////Spread because it's on the right side
+const arr = [1, 2, ...[3, 4, 5, 6, 7, 8, 9]];
+console.log(arr);
+//Rest because it's on the left side
+const [a, b, ...others] = arr;
+console.log(others);
+//On both sides in arrays
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(otherFood);
+//On both sides in objects
+const {sat, ...weekDays} = restaurant.openingHours;
+console.log(weekDays.fri.open);
+
 
 
 /*
