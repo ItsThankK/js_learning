@@ -74,6 +74,7 @@ const {menu = [], starterMenu: starters = []} = restaurant;
 console.log(menu, starters);
 */
 
+/*
 //Mutating while destructuring
 let a = 111;
 let b = 999;
@@ -96,7 +97,6 @@ const {
 
 //
 
-/*
 //Destructuring
 // let [main, , secondary] = restaurant.categories;
 // console.log(main, secondary);
