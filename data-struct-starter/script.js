@@ -63,7 +63,10 @@ const nested = [2, 4, [5, 6]];
 // const [i, , j] = nested;
 // console.log(i, j);
 
-const [i, j, [k1, k2]] = nested;
-console.log(i, j, k2);
+// const [i, j, [k1, k2]] = nested;
+// console.log(i, j, k2);
 
+//Default values
+const [i = 1, j = 1, k = 1] = [8, 9];
+console.log(i, j, k);
 
