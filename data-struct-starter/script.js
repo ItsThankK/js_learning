@@ -29,7 +29,7 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function(starterIndex, mainIndex) {
+  order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -48,6 +48,10 @@ const restaurant = {
     },
   },
 };
+
+//Destructuring objects
+const {name: restaurantName, openingHours: hours, categories: tags} = restaurant;
+console.log(restaurantName, hours, tags);
 
 //Destructuring
 // let [main, , secondary] = restaurant.categories;
@@ -68,5 +72,4 @@ const nested = [2, 4, [5, 6]];
 
 //Default values
 const [i = 1, j = 1, k = 1] = [8, 9];
-console.log(i, j, k);
-
+// console.log(i, j, k);
