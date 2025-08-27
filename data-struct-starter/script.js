@@ -32,13 +32,18 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery: function ({ starterIndex = 0, mainIndex = 0, time = "12", address }) {
+  orderDelivery: function ({
+    starterIndex = 0,
+    mainIndex = 0,
+    time = '12',
+    address,
+  }) {
     console.log(
       `Your order is --> Starting [${this.starterMenu[starterIndex]}] and main [${this.mainMenu[mainIndex]}] Time of delivery is [${time}], location [${address}]`
     );
   },
-  orderPasta: function(ing1, ing2, ing3) {
-    
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here's your pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
 
   openingHours: {
@@ -59,6 +64,15 @@ const restaurant = {
 
 //Destructuring objects
 
+//Real world example
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt('2'),
+  prompt('3'),
+];
+restaurant.orderPasta(...ingredients);
+
+/*
 // The spread operator
 const arr = [7, 8, 9];
 const newArr = [1, 2, ...arr];
@@ -66,7 +80,7 @@ const newArr = [1, 2, ...arr];
 
 // console.log(...newArr);
 
-const newMenu = [...restaurant.mainMenu, "Garri"];
+const newMenu = [...restaurant.mainMenu, 'Garri'];
 console.log(newMenu);
 
 //Copy array
@@ -77,12 +91,10 @@ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 console.log(menu);
 
 //Iterables
-const str = "Jonas";
+const str = 'Jonas';
 const letters = [...str, '', 'S.'];
 console.log(letters);
-
-
-
+*/
 
 /*
 restaurant.orderDelivery({
