@@ -55,6 +55,14 @@ const restaurant = {
 };
 
 //Destructuring objects
+
+// The spread operator
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+
+/*
 restaurant.orderDelivery({
   address: 'Enugu',
   mainIndex: 2,
@@ -65,6 +73,7 @@ restaurant.orderDelivery({
 restaurant.orderDelivery({
   address: "Bayelsa",
 })
+*/
 
 /*
 const {
