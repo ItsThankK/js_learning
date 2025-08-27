@@ -66,6 +66,33 @@ const restaurant = {
   },
 };
 
+/*
+const rest1 = {
+  name: 'Capri',
+  numGuests: 20,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: "Giovanni Rossi",
+};
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+rest2.numGuests ||= 0;
+// console.log(rest1.numGuests);
+// console.log(rest2.numGuests);
+
+// console.log(rest2.numGuests ||= 200);
+
+rest1.owner &&= "Anonymous 🤫";
+rest2.owner &&= "Anonymous 🤫";
+
+console.log(rest1.owner, rest2.owner);
+*/
+
+
 // Short circuiting - && and ||
 ///Logical operators can use any datatype
 ///return any data type
@@ -77,6 +104,7 @@ console.log('' || 'Jonas');
 console.log(true || 0);
 console.log(undefined || null);
 */
+/*
 console.log('-- OR --');
 // // restaurant.numGuests = 2;
 // const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
