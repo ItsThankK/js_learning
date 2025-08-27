@@ -68,7 +68,18 @@ let b = 999;
 const obj = { a: 23, b: 7, c: 14 };
 
 ({ a, b } = obj);
-console.log(a, b);
+// console.log(a, b);
+
+//Nested objects
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+const {fri: {open: openHour, close}} = hours;
+console.log(openHour);
+
 
 /*
 //Destructuring
