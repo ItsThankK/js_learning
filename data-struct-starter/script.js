@@ -59,7 +59,12 @@ const restaurant = {
 // The spread operator
 const arr = [7, 8, 9];
 const newArr = [1, 2, ...arr];
-console.log(newArr);
+// console.log(newArr);
+
+// console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, "Garri"];
+console.log(newMenu);
 
 
 /*
