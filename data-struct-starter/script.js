@@ -73,6 +73,12 @@ const mainMenuCopy = [...restaurant.mainMenu];
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 console.log(menu);
 
+//Iterables
+const str = "Jonas";
+const letters = [...str, '', 'S.'];
+console.log(letters);
+
+
 
 
 /*
