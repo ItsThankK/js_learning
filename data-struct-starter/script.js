@@ -37,6 +37,9 @@ const restaurant = {
       `Your order is --> Starting [${this.starterMenu[starterIndex]}] and main [${this.mainMenu[mainIndex]}] Time of delivery is [${time}], location [${address}]`
     );
   },
+  orderPasta: function(ing1, ing2, ing3) {
+    
+  },
 
   openingHours: {
     thu: {
