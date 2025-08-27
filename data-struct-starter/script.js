@@ -65,12 +65,19 @@ const restaurant = {
 //Destructuring objects
 
 //Real world example
+/*
 const ingredients = [
   prompt("Let's make pasta! Ingredient 1?"),
   prompt('2'),
   prompt('3'),
 ];
 restaurant.orderPasta(...ingredients);
+*/
+
+//Objects as iterables in es 2018
+const newRestaurant = { foundingYear: "2010", ...restaurant, founder: "Jonas"};
+console.log(newRestaurant.foundingYear);
+
 
 /*
 // The spread operator
