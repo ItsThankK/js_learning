@@ -66,6 +66,14 @@ const newArr = [1, 2, ...arr];
 const newMenu = [...restaurant.mainMenu, "Garri"];
 console.log(newMenu);
 
+//Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//Join 2 or more arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+
 
 /*
 restaurant.orderDelivery({
