@@ -50,9 +50,23 @@ const restaurant = {
 };
 
 //Destructuring objects
-const {name: restaurantName, openingHours: hours, categories: tags} = restaurant;
+/*
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
 console.log(restaurantName, hours, tags);
 
+const {menu = [], starterMenu: starters = []} = restaurant;
+console.log(menu, starters);
+*/
+
+//Mutating while destructuring
+
+
+
+/*
 //Destructuring
 // let [main, , secondary] = restaurant.categories;
 // console.log(main, secondary);
@@ -73,3 +87,4 @@ const nested = [2, 4, [5, 6]];
 //Default values
 const [i = 1, j = 1, k = 1] = [8, 9];
 // console.log(i, j, k);
+*/
