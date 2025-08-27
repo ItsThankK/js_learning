@@ -45,3 +45,11 @@ const restaurant = {
     },
   },
 };
+
+//Destructuring
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+[secondary, main] = [main, secondary]
+console.log(main, secondary);
+
