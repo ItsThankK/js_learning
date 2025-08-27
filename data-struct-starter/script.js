@@ -78,12 +78,12 @@ console.log(true || 0);
 console.log(undefined || null);
 */
 console.log('-- OR --');
-// restaurant.numGuests = 2;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
+// // restaurant.numGuests = 2;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
 
-const guests2 = restaurant.numGuests || 1;
-console.log(guests2);
+// const guests2 = restaurant.numGuests || 1;
+// console.log(guests2);
 
 console.log('-- AND --');
 console.log(0 && 'jonas');
@@ -97,6 +97,11 @@ console.log(7 && 'jonas');
 // && to execute code
 // || to set default values
 restaurant.orderPizza && restaurant.orderPizza('fish');
+
+//Nullish operator [NOT or undefined]/
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests ?? 10;
+console.log(guests);
 
 //Destructuring objects
 
