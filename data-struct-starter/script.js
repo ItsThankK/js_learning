@@ -74,6 +74,7 @@ const ingredients = [
 restaurant.orderPasta(...ingredients);
 */
 
+/*
 //Objects as iterables in es 2018
 const newRestaurant = { foundingYear: '2010', ...restaurant, founder: 'Jonas' };
 console.log(newRestaurant.foundingYear);
@@ -86,13 +87,25 @@ console.log(arr);
 const [a, b, ...others] = arr;
 console.log(others);
 //On both sides in arrays
-const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
 console.log(otherFood);
 //On both sides in objects
-const {sat, ...weekDays} = restaurant.openingHours;
+const { sat, ...weekDays } = restaurant.openingHours;
 console.log(weekDays.fri.open);
-
-
+*/
+//Destructuring in functions
+const add = function (...numbers) {
+  let result = 0;
+  for (let index = 0; index < numbers.length; index++) {
+    const element = numbers[index];
+    result += element;
+  }
+  console.log(result);
+};
+add(2,3,5);
 
 /*
 // The spread operator
