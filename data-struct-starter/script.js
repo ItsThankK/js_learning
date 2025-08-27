@@ -32,7 +32,7 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+  orderDelivery: function ({ starterIndex = 0, mainIndex = 0, time = "12", address }) {
     console.log(
       `Your order is --> Starting [${this.starterMenu[starterIndex]}] and main [${this.mainMenu[mainIndex]}] Time of delivery is [${time}], location [${address}]`
     );
@@ -61,6 +61,10 @@ restaurant.orderDelivery({
   time: '10:30',
   starterIndex: 2,
 });
+
+restaurant.orderDelivery({
+  address: "Bayelsa",
+})
 
 /*
 const {
