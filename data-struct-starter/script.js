@@ -45,7 +45,7 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here's your pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
-  orderPizza: function(mainIngredient, ...otherIngredients) {
+  orderPizza: function (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -65,6 +65,26 @@ const restaurant = {
     },
   },
 };
+
+// Short circuiting - && and ||
+///Logical operators can use any datatype
+///return any data type
+///short circuit evaluation
+/*
+console.log(3 || 'Jonas');
+console.log(NaN || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+*/
+// restaurant.numGuests = 2;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 1;
+console.log(guests2);
+
+
 
 //Destructuring objects
 
@@ -100,6 +120,7 @@ console.log(otherFood);
 const { sat, ...weekDays } = restaurant.openingHours;
 console.log(weekDays.fri.open);
 */
+/*
 //Destructuring in functions
 const add = function (...numbers) {
   let result = 0;
@@ -112,6 +133,7 @@ const add = function (...numbers) {
 add(2,3,5);
 
 restaurant.orderPizza("cheese", 4, 6, 7);
+*/
 
 /*
 // The spread operator
