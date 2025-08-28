@@ -22,20 +22,21 @@ const mexicanFoods = new Set([
   'garlic',
 ]);
 
+const weekDays = ['mon', 'tue', 'wed', 'thur', 'fri', 'sat', 'sun'];
 const openingHours = {
-  thu: {
+  [weekDays[3]]: {
     open: 12,
     close: 22,
   },
-  fri: {
+  [weekDays[4]]: {
     open: 11,
     close: 23,
   },
-  sat: {
+  [weekDays[5]]: {
     open: 0, // Open 24 hours
     close: 24,
   },
-}
+};
 
 // Data needed for first part of the section
 const restaurant = {
@@ -44,27 +45,27 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
+
+  //ES6 Enhanced object literals
+  //Instead of -> order: function (starterIndex, mainIndex) {
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery: function ({
-    starterIndex = 0,
-    mainIndex = 0,
-    time = '12',
-    address,
-  }) {
+  //ES6 Enhanced object literals
+  //Instead of -> openingHours: openingHours;
+  openingHours,
+  orderDelivery({ starterIndex = 0, mainIndex = 0, time = '12', address }) {
     console.log(
       `Your order is --> Starting [${this.starterMenu[starterIndex]}] and main [${this.mainMenu[mainIndex]}] Time of delivery is [${time}], location [${address}]`
     );
   },
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(`Here's your pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
-
 };
 
 /*
@@ -375,12 +376,12 @@ team2 > team1 && console.log('Team 2 is more likely to win');
 */
 //// The FOR OF LOOP
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-for(const item of menu) {
+for (const item of menu) {
   console.log(item);
 }
 
-for(const item of menu.entries()) {
+for (const item of menu.entries()) {
   console.log(item);
-} 
+}
 
 //Enhanced object literals
