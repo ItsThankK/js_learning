@@ -47,7 +47,7 @@ const restaurant = {
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
   //ES6 Enhanced object literals
-  //Instead of -> order: function (starterIndex, mainIndex) {
+  //Instead of -> : function (starterIndex, mainIndex) {
   order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
@@ -389,7 +389,10 @@ console.log(restaurant.openingHours.mon?.open);
 
 const days = ['mon', 'tue', 'wed', 'thur', 'fri', 'sat', 'sun'];
 
-for(const day of days) {
-  const opens = restaurant.openingHours[day]?.open ?? "CLOSED";
+for (const day of days) {
+  const opens = restaurant.openingHours[day]?.open ?? 'CLOSED';
   console.log(`On ${day} we open at ${opens}`);
 }
+
+// Optional chaining on Methods
+console.log(restaurant.order?.(0, 1) ?? `Method doesn't exixt`);
