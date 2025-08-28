@@ -295,7 +295,7 @@ const [i = 1, j = 1, k = 1] = [8, 9];
  * 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, without using an if/else statement or the ternary operator. Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
  */
 
-/*
+
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -335,7 +335,7 @@ const game = {
 
 console.log('--FOOTBALL BETTING APP--');
 console.log('');
-
+////---------------------challenge 1-------------------////
 //✅const players1 = game.players[0];
 //✅const players2 = game.players[1];
 const [players1, players2] = game.players;
@@ -360,7 +360,7 @@ const scored = game.scored;
 const printGoals = function (...numbersOfPlayers) {
   let totalGoals = 0;
   console.log(`<-- List of players that scored! 🥳 -->`);
-
+  
   for (let index = 0; index < numbersOfPlayers.length; index++) {
     const playersIn = numbersOfPlayers[index];
     console.log(`             ${playersIn}`);
@@ -372,35 +372,61 @@ const printGoals = function (...numbersOfPlayers) {
 printGoals(...scored);
 
 team1 < team2 && console.log('Team 1 is more likely to win');
-team2 > team1 && console.log('Team 2 is more likely to win');
-*/
+team2 < team1 && console.log('Team 2 is more likely to win');
+
+////---------------------challenge 2-------------------////
+
+/*
 //// The FOR OF LOOP
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 for (const item of menu) {
   console.log(item);
+  }
+  
+  for (const item of menu.entries()) {
+    console.log(item);
+    }
+    
+    //Optional chaining -> ?
+    console.log(restaurant.openingHours.mon?.open);
+    
+    const days = ['mon', 'tue', 'wed', 'thur', 'fri', 'sat', 'sun'];
+    
+    for (const day of days) {
+      const opens = restaurant.openingHours[day]?.open ?? 'CLOSED';
+      console.log(`On ${day} we open at ${opens}`);
+      }
+      
+      // Optional chaining on Methods
+      console.log(restaurant.order?.(0, 1) ?? `Method doesn't exixt`);
+      // Optional chaining on arrays
+      const arrayUsers = [{
+        name: 'jonas',
+        email: "hello@jonas.id"
+        }];
+        console.log(arrayUsers[0]?.naem ?? "User array is empty");
+        */
+/*
+// Looping objects: object keys, values and entries
+///Looping over Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+let openStr = `We are open ${properties.length} days: `;
+
+for(const day of properties) {
+  openStr += `${day}, `;
 }
+console.log(openStr);
 
-for (const item of menu.entries()) {
-  console.log(item);
+///Looping over Property VALUES
+const values = Object.values(openingHours);
+console.log(values[0].close);
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for(const [day, {open, close}] of entries) {
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
 }
-
-//Optional chaining -> ?
-console.log(restaurant.openingHours.mon?.open);
-
-const days = ['mon', 'tue', 'wed', 'thur', 'fri', 'sat', 'sun'];
-
-for (const day of days) {
-  const opens = restaurant.openingHours[day]?.open ?? 'CLOSED';
-  console.log(`On ${day} we open at ${opens}`);
-}
-
-// Optional chaining on Methods
-console.log(restaurant.order?.(0, 1) ?? `Method doesn't exixt`);
-// Optional chaining on arrays
-const arrayUsers = [{
-  name: 'jonas',
-  email: "hello@jonas.id"
-}];
-console.log(arrayUsers[0]?.naem ?? "User array is empty");
-
+*/
 
