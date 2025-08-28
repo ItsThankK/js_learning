@@ -22,6 +22,21 @@ const mexicanFoods = new Set([
   'garlic',
 ]);
 
+const openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+}
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -50,20 +65,6 @@ const restaurant = {
     console.log(otherIngredients);
   },
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
 };
 
 /*
@@ -293,6 +294,7 @@ const [i = 1, j = 1, k = 1] = [8, 9];
  * 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, without using an if/else statement or the ternary operator. Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
  */
 
+/*
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -338,17 +340,18 @@ console.log('');
 const [players1, players2] = game.players;
 
 //✅
-const [gk, ...fieldPlayers] = players1; 
+const [gk, ...fieldPlayers] = players1;
 
 //❌ const [...allPlayers] = game.players;
 const allPlayers = [...players1, ...players2];
-
 
 //✅
 const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 
 //✅const { team1, x: draw, team2 } = game.odds;
-const {odds: {team1, x: draw, team2}} = game;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
 
 //✅
 const scored = game.scored;
@@ -367,6 +370,17 @@ const printGoals = function (...numbersOfPlayers) {
 //✅
 printGoals(...scored);
 
-team1 < team2 && console.log("Team 1 is more likely to win");
-team2 > team1 && console.log("Team 2 is more likely to win");
+team1 < team2 && console.log('Team 1 is more likely to win');
+team2 > team1 && console.log('Team 2 is more likely to win');
+*/
+//// The FOR OF LOOP
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for(const item of menu) {
+  console.log(item);
+}
 
+for(const item of menu.entries()) {
+  console.log(item);
+} 
+
+//Enhanced object literals
