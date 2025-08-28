@@ -384,4 +384,12 @@ for (const item of menu.entries()) {
   console.log(item);
 }
 
-//Enhanced object literals
+//Optional chaining -> ?
+console.log(restaurant.openingHours.mon?.open);
+
+const days = ['mon', 'tue', 'wed', 'thur', 'fri', 'sat', 'sun'];
+
+for(const day of days) {
+  const opens = restaurant.openingHours[day]?.open ?? "CLOSED";
+  console.log(`On ${day} we open at ${opens}`);
+}
