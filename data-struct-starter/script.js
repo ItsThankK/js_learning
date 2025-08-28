@@ -396,3 +396,11 @@ for (const day of days) {
 
 // Optional chaining on Methods
 console.log(restaurant.order?.(0, 1) ?? `Method doesn't exixt`);
+// Optional chaining on arrays
+const arrayUsers = [{
+  name: 'jonas',
+  email: "hello@jonas.id"
+}];
+console.log(arrayUsers[0]?.naem ?? "User array is empty");
+
+
