@@ -99,10 +99,9 @@ const values = Object.values(hours);
 const entries = Object.entries(hours);
 // console.log(entries);
 
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key}, we open at ${open} and close at ${close}`);
+for (const [day, { open, close }] of entries) {
+  // console.log(`On ${day}, we open at ${open} and close at ${close}`);
 }
-
 
 /*
 const add = function (...numbers) {
@@ -221,4 +220,22 @@ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
 for (const [i, el] of menu.entries()) {
   // console.log(`${i + 1}: ${el}`);
+}
+
+// CHALLENGE 2
+console.log(`LOOPING OVER GOALS SCORED ARRAY IN THE GAME OBJECT`);
+for (const [goalIndex, playerName] of game.scored.entries()) {
+  console.log(`Goal ${goalIndex + 1}: ${playerName}`);
+}console.log(``);
+console.log(`LOOPING OVER ODDS ARRAY AND CALCULATING THE AVERAGE ODD`);
+const oddsArr = Object.values(game.odds);
+let oddsSum = 0;
+for (const oddsNum of oddsArr) {
+  oddsSum += oddsNum;
+}
+console.log(`Average of the odds: ${oddsSum / oddsArr.length}`); console.log(``);
+console.log(`LOOPING THE GAME OBJECT AND FETTCHING THE TEAM NAME AND ODD`);
+
+for (const [key, value] of Object.entries(game.odds)) {
+  console.log(`Odd of victory ${game[key] ?? `draw`}: ${value}`);
 }
