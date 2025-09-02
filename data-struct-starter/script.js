@@ -244,6 +244,7 @@ for (const [key, value] of Object.entries(game.odds)) {
 */
 
 /**Start learning SETS */
+/*
 const ordersSet = new Set([
   `Pasta`,
   `Pizza`,
@@ -272,5 +273,44 @@ const staff = [`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`];
 
 const staffUnique = [...new Set(staff)];
 console.log(staffUnique);
-
+*/
 /**Start learning MAPS */
+const rest = new Map();
+rest.set(`name`, `Classico Italiano`);
+rest.set(1, `Firenze, Italy`);
+console.log(rest.set(2, `Lisbon, Portugal`));
+
+rest
+  .set(`categories`, [`Waiter`, `Chef`, `Waiter`, `Manager`])
+  .set(`open`, 11)
+  .set(`close`, 23)
+  .set(true, `We are open`)
+  .set(false, `We are closed`);
+
+// console.log(rest.get(`name`));
+// console.log(rest.get(true));
+
+const time = 21;
+console.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
+console.log(rest.has(`categories`));
+rest.delete(2);
+console.log(rest.size);
+// rest.clear()
+const arrT = [1, 2];
+rest.set(document.querySelector(`h1`), `Heading`);
+rest.set(arrT, `Test`);
+
+console.log(rest.get(arrT));
+
+/**Start learning MAP Iteration */
+const question = new Map([
+  [`question`, `What is the best programming language in the world?`],
+  [1, `C`],
+  [2, `Java`],
+  [3, `JavaScript`],
+  [`correct`, 3],
+  [true, `You answered correctly! 😀`],
+  [false, `You answered incorrectly! 😫`]
+]);
+console.log(question);
+
