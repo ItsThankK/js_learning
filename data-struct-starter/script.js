@@ -314,3 +314,7 @@ const question = new Map([
 ]);
 console.log(question);
 
+// Convert object to map
+const hoursMap = new Map(Object.entries(hours))
+console.log(hoursMap);
+
