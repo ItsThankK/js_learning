@@ -23,16 +23,17 @@ const mexicanFoods = new Set([
 ]);
 
 // Data needed for first part of the section
-const openingHours = {
-  thu: {
+const weekDays = [`mon`, `tue`, `wed`, `thur`, `fri`, `sat`, `sun`];
+const hours = {
+  [weekDays[3]]: {
     open: 12,
     close: 22,
   },
-  fri: {
+  [weekDays[4]]: {
     open: 11,
     close: 23,
   },
-  sat: {
+  [weekDays[5]]: {
     open: 0, // Open 24 hours
     close: 24,
   },
@@ -44,24 +45,64 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  // openingHours: openingHours,
+  hours,
 
-  order: function (starterIndex, mainIndex) {
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery: function ({
-    starterIndex = 1,
-    time = `10 pm`,
-    mainIndex = 0,
-    address,
-  }) {
+  orderDelivery({ starterIndex = 1, time = `10 pm`, mainIndex = 0, address }) {
     console.log(
       `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(`Making pasta with ${ing1} ${ing2} & ${ing3}`);
   },
 };
+// console.log(restaurant.openingHours?.mon?.open);
+//  RW Example
+const days = [`mon`, `tue`, `wed`, `thur`, `fri`, `sat`, `sun`];
+
+for (const day of days) {
+  const open = restaurant.hours[day]?.open ?? `No`;
+  // console.log(`Do we open on ${day}? ${open}`);
+}
+
+// METHODS:
+// console.log(restaurant.order?.(0, 1) ?? `Method does not exist`);
+
+// ARRAYS
+const users = [
+  {
+    name: `jonas`,
+    email: `hello@j.com`,
+  },
+];
+
+// console.log(users[0]?.name ?? `User doesn't exist`);
+
+// Objects keys - value looping
+// properties NAMES
+const properties = Object.keys(hours);
+let openStr = `We are open ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day} `;
+}
+console.log(openStr);
+
+// properties VALUES
+const values = Object.values(hours);
+// console.log(values);
+
+// properties ENTRIES
+const entries = Object.entries(hours);
+// console.log(entries);
+
+for (const x of entries) {
+  console.log(entries);
+  
+}
 
 
 /*
