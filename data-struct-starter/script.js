@@ -226,16 +226,20 @@ for (const [i, el] of menu.entries()) {
 console.log(`LOOPING OVER GOALS SCORED ARRAY IN THE GAME OBJECT`);
 for (const [goalIndex, playerName] of game.scored.entries()) {
   console.log(`Goal ${goalIndex + 1}: ${playerName}`);
-}console.log(``);
+}
+console.log(``);
 console.log(`LOOPING OVER ODDS ARRAY AND CALCULATING THE AVERAGE ODD`);
 const oddsArr = Object.values(game.odds);
 let oddsSum = 0;
 for (const oddsNum of oddsArr) {
   oddsSum += oddsNum;
 }
-console.log(`Average of the odds: ${oddsSum / oddsArr.length}`); console.log(``);
+console.log(`Average of the odds: ${oddsSum / oddsArr.length}`);
+console.log(``);
 console.log(`LOOPING THE GAME OBJECT AND FETTCHING THE TEAM NAME AND ODD`);
 
 for (const [key, value] of Object.entries(game.odds)) {
   console.log(`Odd of victory ${game[key] ?? `draw`}: ${value}`);
 }
+
+/**Start learning SETS */
