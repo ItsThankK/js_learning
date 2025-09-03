@@ -174,7 +174,7 @@ const game = {
   date: 'Nov 9th, 2037',
   odds: { team1: 1.33, x: 3.25, team2: 6.5 },
 };
-
+/*
 const { team1: t1, team2: t2 } = game;
 
 const [players1, players2] = game.players;
@@ -273,8 +273,8 @@ const staff = [`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`];
 
 const staffUnique = [...new Set(staff)];
 console.log(staffUnique);
-*/
 
+*/
 /**Start learning MAPS */
 /*
 const rest = new Map();
@@ -305,6 +305,7 @@ rest.set(arrT, `Test`);
 console.log(rest.get(arrT));
 */
 /**Start learning MAP Iteration */
+/*
 const question = new Map([
   [`question`, `What is the best programming language in the world?`],
   [1, `C`],
@@ -321,17 +322,36 @@ const hoursMap = new Map(Object.entries(hours));
 // console.log(hoursMap);
 
 // Quiz app
+
 console.log(question.get(`question`));
 for (const [key, value] of question) {
   if (typeof key === `number`) {
     console.log(`Answer ${key}: ${value}`);
   }
 }
-const answer = Number(prompt(`Your answer`))
+const answer = Number(prompt(`Your answer`));
 console.log(answer);
 
 console.log(question.get(question.get(`correct`) === answer));
 
+// Convert map to array
+console.log([...question]);
+*/
 
+//CHALLENGE 3
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
 
-
+const events = [new Set(gameEvents)];
+console.log(events);
