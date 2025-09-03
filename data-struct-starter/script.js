@@ -339,6 +339,7 @@ console.log([...question]);
 */
 
 //CHALLENGE 3
+/*
 const gameEvents = new Map([
   [17, '⚽ GOAL'],
   [36, '🔁 Substitution'],
@@ -353,5 +354,30 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 
-const events = [new Set(gameEvents)];
+console.log(`SIZE OF THE GAMES EVENT`);
+console.log(gameEvents.size);
+
+console.log(`CONVERT MAP TO ARRAY`);
+const events = [...new Set(gameEvents)];
 console.log(events);
+
+console.log(`SIZE OF THE GAMES EVENT AFTER DELETING`);
+gameEvents.delete(64);
+console.log(gameEvents.size);
+
+console.log(`HOW FREQUENTLY EVENTS HAPPENED IN THE 90 MIN FOOTBALL GAME`);
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+
+console.log(``);
+console.log(`MARKING EVENTS INTO FIRST HALF OR SECOND HALF`);
+for (const [time, event] of gameEvents) {
+  time <= 45
+    ? console.log(`[FIRST HALF] ${time}: ${event}`)
+    : console.log(`[SECOND HALF] ${time}: ${event}`);
+}
+*/
+
+// START WORKING WITH STRINGS SECTION
+
