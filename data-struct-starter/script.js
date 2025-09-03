@@ -380,4 +380,75 @@ for (const [time, event] of gameEvents) {
 */
 
 // START WORKING WITH STRINGS SECTION
+const airline = `TAP Air Portugal`;
+const plane = `A320`;
+/*
+console.log(plane[0]);
+console.log(`b747`[2]);
+console.log(airline.length);
+console.log(airline.indexOf(`r`));
+console.log(airline.lastIndexOf(`r`));
+console.log(airline.indexOf(`portugal`));
+// 0 indexed, starts at index 4, stops and excludes index 7
+console.log(airline.slice(4, 7));
+// Extracting words from strings
+console.log(airline.slice(0, airline.indexOf(` `)));
+console.log(airline.slice(airline.lastIndexOf(` `) + 1));
+console.log(airline.slice(-5));
+console.log(airline.slice(1, -5));
+*/
+const checkMiddleSeat = function (seat) {
+  // B and E are the middle seats
+  const test = seat.slice(-1) === `B` || seat.slice(-1) === `E`;
+  console.log(test ? `You got the middle seat!` : `You got lucky!`);
+};
+checkMiddleSeat(`11B`);
+checkMiddleSeat(`23C`);
+checkMiddleSeat(`3E`);
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+const passanger = `jOnaS`;
+const passangerLower = passanger.toLowerCase();
+const passangerCorrect =
+  passangerLower[0].toUpperCase() + passangerLower.slice(1);
+console.log(passangerCorrect);
+
+// Comparing email
+const email = `hello@jonas.io`;
+const loginEmail = `   Hello@Jonas.Io \n`;
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+// better and shorter
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(normalizedEmail === email);
+// Replacing parts of strings
+const priceGB = `288,97#`;
+const priceUS = priceGB.replace(`#`, `$`).replace(`,`, `.`);
+console.log(priceUS);
+const announcement = `All passengers come to boarding door 23. Boarding door 23`;
+console.log(announcement.replaceAll(`door`, `gate`));
+// String methods that return boolean
+const planeN = `A320neo`;
+console.log(planeN.includes(`a`));
+console.log(planeN.startsWith(`A`));
+console.log(planeN.endsWith(`A`));
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes(`knife`) || baggage.includes(`gun`)) {
+    console.log(`You are NOT allowed onboard`);
+  } else {
+    console.log(`You are allowed aboard`);
+  }
+};
+
+checkBaggage(`I have a laptop, some Food and a pocket Knife `);
+checkBaggage(`Socks and camera`);
+checkBaggage(`Got some snacks and a gun for protection`);
+
+// START LEARNING SPLIT/
 
