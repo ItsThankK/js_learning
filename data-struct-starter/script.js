@@ -458,3 +458,34 @@ console.log(firstName, lastName);
 const newName = [`Mr.`, firstName, lastName.toUpperCase()].join(` `);
 console.log(newName);
 
+const capitalizeName = function (name) {
+  const names = name.split(` `);
+  const namesUpper = [];
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(` `));
+};
+const passangerN = `jessica ann smith davis`;
+capitalizeName(passangerN);
+capitalizeName(newName);
+
+// Padding a string
+// padStart/
+const message = `Go to gate 23!`;
+console.log(message.padStart(25, `+`));
+console.log(`jonas`.padStart(25, `+`));
+// padEnd/
+// adds 10 - and make it 35
+console.log(message.padStart(25, `+`).padEnd(35, `-`));
+console.log(`jonas`.padStart(25, `+`).padEnd(35, `-`));
+// Real world example of padding/
+const maskCreditCard = function (number) {
+  const str = number + ``;
+  // str.slice(-4);
+  console.log(str.slice(-4).padStart(str.length, `*`));
+  
+};
+maskCreditCard(43378463864647384);
+maskCreditCard(`849493993838389984848774`);
