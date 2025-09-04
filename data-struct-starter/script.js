@@ -451,4 +451,10 @@ checkBaggage(`Socks and camera`);
 checkBaggage(`Got some snacks and a gun for protection`);
 
 // START LEARNING SPLIT/
+console.log(...`a+very+nice+string`.split(`+`));
+// Destructuring string arrays to variables
+const [firstName, lastName] = `Jonas Schedtmann`.split(` `);
+console.log(firstName, lastName);
+const newName = [`Mr.`, firstName, lastName.toUpperCase()].join(` `);
+console.log(newName);
 
