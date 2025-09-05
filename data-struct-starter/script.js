@@ -397,6 +397,7 @@ console.log(airline.slice(airline.lastIndexOf(` `) + 1));
 console.log(airline.slice(-5));
 console.log(airline.slice(1, -5));
 */
+/*
 const checkMiddleSeat = function (seat) {
   // B and E are the middle seats
   const test = seat.slice(-1) === `B` || seat.slice(-1) === `E`;
@@ -497,5 +498,36 @@ const planesInLine = function (n) {
   console.log(`There are ${n} planes in line ${`✈`.repeat(n)}`);
 };
 planesInLine(5);
+*/
 
-// CHALLENGE 4
+// CHALLENGE 4 //
+// Add textarea & button to html
+document.body.append(document.createElement(`textarea`));
+document.body.append(document.createElement(`button`));
+// Select the elements in JavaScript
+const textarea = document.querySelector(`textarea`);
+const button = document.querySelector(`button`);
+// Onclick action of the button
+button.addEventListener(`click`, function () {
+  const words = textarea.value;
+  console.log(words);
+
+  const wordsArray = words.split(` `);
+  const wordsArrayToSet = new Set(wordsArray);
+  console.log(wordsArrayToSet.delete(``));
+  const wordsArrayToSetBackToArray = [...wordsArrayToSet];
+  console.log(wordsArrayToSetBackToArray);
+
+  let counter = 1;
+  for (const word of wordsArrayToSetBackToArray) {
+    const [fW, sW] = word.toLowerCase().trim().split(`_`);
+    const replaced = sW.replace(sW[0], sW[0].toUpperCase());
+    const finalWord = fW + replaced;
+    console.log(finalWord.padEnd(20, ` `) + `✅`.repeat(counter));
+    counter++;
+  }
+});
+
+// TEST DATAS
+// a_b c_d e_r            v_z
+// underscore_case   first_name   Some_Variable      calculate_AGE delayed_departure
