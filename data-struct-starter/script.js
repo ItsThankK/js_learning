@@ -531,3 +531,14 @@ button.addEventListener(`click`, function () {
 // TEST DATAS
 // a_b c_d e_r            v_z
 // underscore_case   first_name   Some_Variable      calculate_AGE delayed_departure
+
+for (const flight of flights.split(`+`)) {
+  const [type, from, to, time] = flight.split(`;`);
+  const output = `${type.includes(`Delayed`) ? `❌` : `✅`} ${type.replaceAll(
+    `_`,
+    ` `
+  )} ${from.slice(0, 3).toUpperCase()} to ${to
+    .slice(0, 3)
+    .toUpperCase()} (${time.replace(`:`, `h`)})`.padStart(27);
+  console.log(output);
+}
