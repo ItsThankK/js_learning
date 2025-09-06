@@ -110,7 +110,7 @@ const lufthansa = {
     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
   },
 };
-
+const book = lufthansa.book;
 // lufthansa.book(239, `Jonas SchM`);
 // lufthansa.book(635, `John Smith`);
 console.log(lufthansa);
@@ -138,3 +138,10 @@ console.log(lufthansa);
 console.log(swiss);
 
 // Apply method! Doesn't recieve inputs/
+// Takes an array of the elements
+// Not used much in modern JS
+const flightData = [888, `George Cooper`];
+book.apply(swiss, flightData);
+console.log(swiss);
+// More modern and used 👇
+book.call(swiss, ...flightData);
