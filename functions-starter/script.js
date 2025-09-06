@@ -145,3 +145,44 @@ book.apply(swiss, flightData);
 console.log(swiss);
 // More modern and used 👇
 book.call(swiss, ...flightData);
+
+// THE BIND METHOD
+// More important than the call and apply
+// Returns a function where the THIS is bound
+console.log(`BIND... `.repeat(5));
+const bookEw = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLx = book.bind(swiss);
+
+bookEw(77777, `John Wick`);
+// Partial application
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23(`Tinubu`);
+
+// With event listeners
+lufthansa.planes = 300;
+lufthansa.buyplane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+document
+  .querySelector(`.buy`)
+  .addEventListener(`click`, lufthansa.buyplane.bind(lufthansa));
+
+// Still on partial application
+const addTask = (rate, value) => value + value * rate;
+console.log(addTask(0.1, 200));
+// Null because we are not using the THIS here!
+const addVAT = addTask.bind(null, 0.23);
+console.log(addVAT(100));
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.5);
+console.log(addVAT2(100));
