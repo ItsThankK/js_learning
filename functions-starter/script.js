@@ -189,7 +189,6 @@ const addVAT2 = addTaxRate(0.5);
 console.log(addVAT2(100));
 */
 
-
 console.log(`CHALLENGE 1...`.repeat(3));
 // CHALLENGE 1
 const poll = {
@@ -203,15 +202,23 @@ const poll = {
       )
     );
     console.log(`User Input: ${userInputNum}`);
-    console.log(this);
-    console.log(this.answers);
+    console.log(`Current poll array: ${this.answers}`);
     if (userInputNum < 0 || userInputNum > 3) {
       alert(`NOT A CORRECT NUMBER!!!`);
       this.registerNewAnswer();
     } else {
-      console.log(this.answers);
       this.answers[`${userInputNum}`] += 1;
-      console.log(this.answers);
+      this.displayResults(String(this.answers));
+      this.displayResults(this.answers);
+    }
+  },
+  displayResults(type) {
+    if (typeof type === `string`) {
+      console.log(`AS STRING`);
+      console.log(`Poll results are ${this.answers}`);
+    } else {
+      console.log(`AS ARRAY`);
+      console.log(`Updated pool array: [${this.answers}]`);
     }
   },
 };
