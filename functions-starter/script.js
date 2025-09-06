@@ -110,8 +110,13 @@ const lufthansa = {
 console.log(lufthansa);
 
 const eurowings = {
-  name: `Eurowings`,
+  airline: `Eurowings`,
   iataCode: `EW`,
+  bookings: [],
+};
+const swiss = {
+  airline: `Swiss`,
+  iataCode: `SW`,
   bookings: [],
 };
 // Copy luth book method into book [a normal fuction]
@@ -121,9 +126,16 @@ const book = function (flightNum, name) {
   );
   this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
 };
+
+// Call Method/
 // This is now the eurowings
 book.call(eurowings, 23, `Sarah Williams`);
 // This is now lufthansa
 book.call(lufthansa, 258, `jj onas`);
+// This is now swiss
+book.call(swiss, 7458, `swiss jet`);
 console.log(eurowings);
 console.log(lufthansa);
+console.log(swiss);
+
+
