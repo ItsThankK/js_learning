@@ -99,6 +99,7 @@ greet(`Hello`)(`World`);
 const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 */
 // Call and Apply methods
+/*
 const lufthansa = {
   airline: `Lufthansa`,
   iataCode: `LH`,
@@ -186,3 +187,44 @@ const addTaxRate = function (rate) {
 
 const addVAT2 = addTaxRate(0.5);
 console.log(addVAT2(100));
+*/
+
+
+console.log(`CHALLENGE 1...`.repeat(3));
+// CHALLENGE 1
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3:  C++'], // This generates [0, 0, 0, 0]. More in the next section!
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    const userInputNum = Number(
+      prompt(
+        `What is your favourite programming language?\n0: JavaScript\n1: Python\n2: Rust\n3: C++\n(Write option number) `
+      )
+    );
+    console.log(`User Input: ${userInputNum}`);
+    console.log(this);
+    console.log(this.answers);
+    if (userInputNum < 0 || userInputNum > 3) {
+      alert(`NOT A CORRECT NUMBER!!!`);
+      this.registerNewAnswer();
+    } else {
+      console.log(this.answers);
+      this.answers[`${userInputNum}`] += 1;
+      console.log(this.answers);
+    }
+  },
+};
+
+const answerPoll = poll.registerNewAnswer;
+const answerPollBtn = document
+  .querySelector('.poll')
+  .addEventListener(`click`, function () {
+    answerPoll.call(poll);
+  });
+
+/*
+Test data for bonus:
+Data 1: [5, 2, 3]
+Data 2: [1, 5, 3, 9, 6, 1] 
+*/
