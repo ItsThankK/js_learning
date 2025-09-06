@@ -103,6 +103,12 @@ const lufthansa = {
   airline: `Lufthansa`,
   iataCode: `LH`,
   bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
 };
 
 // lufthansa.book(239, `Jonas SchM`);
@@ -120,13 +126,6 @@ const swiss = {
   bookings: [],
 };
 // Copy luth book method into book [a normal fuction]
-const book = function (flightNum, name) {
-  console.log(
-    `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-  );
-  this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-};
-
 // Call Method/
 // This is now the eurowings
 book.call(eurowings, 23, `Sarah Williams`);
@@ -138,4 +137,4 @@ console.log(eurowings);
 console.log(lufthansa);
 console.log(swiss);
 
-
+// Apply method! Doesn't recieve inputs/
