@@ -57,7 +57,7 @@ const newPassport = function (person) {
 // Passing by reference OR values?
 // Javascript DOESN'T have passing by reference/
 // Javascript pass a value
-
+/*
 const oneWord = function (str) {
   return str.replace(/ /g, ``).toLowerCase();
 };
@@ -97,3 +97,33 @@ greet(`Hello`)(`World`);
 
 // Challenge
 const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+*/
+// Call and Apply methods
+const lufthansa = {
+  airline: `Lufthansa`,
+  iataCode: `LH`,
+  bookings: [],
+};
+
+// lufthansa.book(239, `Jonas SchM`);
+// lufthansa.book(635, `John Smith`);
+console.log(lufthansa);
+
+const eurowings = {
+  name: `Eurowings`,
+  iataCode: `EW`,
+  bookings: [],
+};
+// Copy luth book method into book [a normal fuction]
+const book = function (flightNum, name) {
+  console.log(
+    `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+  );
+  this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+};
+// This is now the eurowings
+book.call(eurowings, 23, `Sarah Williams`);
+// This is now lufthansa
+book.call(lufthansa, 258, `jj onas`);
+console.log(eurowings);
+console.log(lufthansa);
