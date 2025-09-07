@@ -240,4 +240,14 @@ Data 2: [1, 5, 3, 9, 6, 1]
 // A function that runs only once and disappears
 (function () {
   console.log(`This will never run again!`);
-});
+  const isPrivate = 23;
+})();
+
+(() => console.log(`This will also never run again`))();
+// Won't work because of scoping
+// console.log(isPrivate);
+
+// Closures
+const secureBooking = function () {
+  
+}
