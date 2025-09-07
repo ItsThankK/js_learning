@@ -303,9 +303,7 @@ const perGroup = 1000;
   const header = document.querySelector('h1');
   header.style.color = 'red';
 
-  document.querySelector(`body`).addEventListener(
-  `click`,
-  function () {
-  header.style.color = 'blue';
-})
-})(); 
+  document.querySelector(`body`).addEventListener(`click`, function () {
+    header.style.color = 'blue';
+  });
+})();
