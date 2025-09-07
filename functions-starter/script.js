@@ -188,7 +188,7 @@ const addTaxRate = function (rate) {
 const addVAT2 = addTaxRate(0.5);
 console.log(addVAT2(100));
 */
-
+/*
 console.log(`CHALLENGE 1...`.repeat(3));
 // CHALLENGE 1
 const poll = {
@@ -235,7 +235,7 @@ Test data for bonus:
 Data 1: [5, 2, 3]
 Data 2: [1, 5, 3, 9, 6, 1] 
 */
-
+/*
 // IIFE
 // A function that runs only once and disappears
 (function () {
@@ -249,5 +249,63 @@ Data 2: [1, 5, 3, 9, 6, 1]
 
 // Closures
 const secureBooking = function () {
-  
-}
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+const booker = secureBooking();
+booker();
+booker();
+booker();
+console.dir(booker);
+*/
+// More closure examples
+// Example 1/
+let f;
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+g();
+f();
+// Re-assigning f function
+h();
+f();
+console.dir(f);
+
+// Example 2/
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+  setTimeout(() => {
+    console.log(`We are now boarding ${n} passengers`);
+    console.log(`There are 3 groups each with ${perGroup} passengers`);
+  }, wait * 1000);
+  console.log(`Will start boarding ${wait} seconds`);
+};
+boardPassengers(180, 3);
+// The closure has priority over the scope chain
+const perGroup = 1000;
+
+// CHALLENGE 2
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector(`body`).addEventListener(
+  `click`,
+  function () {
+  header.style.color = 'blue';
+})
+})(); 
