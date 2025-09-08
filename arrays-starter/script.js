@@ -106,6 +106,7 @@ console.log(arr.slice(-1));
 console.log(arr.at(-1));
 */
 // FOREACH Looping arrays
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 for (const [i, movement] of movements.entries()) {
@@ -140,4 +141,4 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value) {
   console.log(`${value}`);
 });
-
+*/
