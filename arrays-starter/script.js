@@ -83,10 +83,25 @@ console.log(arr.slice(-2));
 console.log(arr.slice(1, -2));
 // Using slice to create a shallow copy
 console.log(arr.slice());
+
 // splice method - mutates the array
 // console.log(arr.splice(2));
 console.log(arr.splice(-1));
 console.log(arr.splice(1, 2));
 console.log(arr); // array mutated!
+
+// reverse method - mutates the array
+arr = [`a`, `b`, `c`, `d`, `e`];
+const arr2 = [`j`, `i`, `h`, `g`, `f`];
+console.log(arr2.reverse());
+console.log(arr2); // array mutated!
+
+// concat method - Doesn't mutate the array
+const letters = arr.concat(arr);
+console.log(letters);
+
+// join method - converts to string
+console.log(letters.join(` -`));
+
 
 
