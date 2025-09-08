@@ -111,3 +111,6 @@ console.log(arr.at(0));
 console.log(arr[arr.length - 1]);
 console.log(arr.slice(-1));
 console.log(arr.at(-1));
+
+// FOREACH Looping arrays
+
