@@ -90,12 +90,13 @@ const createUsernames = function (accs) {
       .join(``);
   });
 };
+/*
 createUsernames(accounts);
 console.log(account1.username);
 console.log(account2.username);
 console.log(account3.username);
 console.log(account4.username);
-
+*/
 // Calc the movements, display sum in the UI/
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((accum, mov) => accum + mov, 0);
@@ -186,7 +187,7 @@ currenciesUnique.forEach(function (value) {
 */
 
 // CHALLENGE 1
-/*
+
 // Test data 1
 // const JuliasData = [3, 5, 2, 12, 7];
 // const KatesData = [4, 1, 15, 8, 3];
@@ -211,8 +212,30 @@ const checkDogs = function (dogsJulia, dogsKate) {
   });
 };
 // checkDogs(JuliasData, KatesData);
-*/
 
+// CHALLENGE 2
+const calcAverageHumanAge = function (dogsAges) {
+  console.log(`Input array:`, dogsAges);
+
+  const dogAgeInHuman = dogsAges
+    .map(dogAge => {
+      return dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4;
+    })
+    .filter(dogHumanAge => {
+      return dogHumanAge >= 18;
+    });
+  console.log(`Filterred array:`, dogAgeInHuman);
+
+  const averageDogHumanAge =
+    dogAgeInHuman.reduce((accum, dog) => {
+      return accum + dog;
+    }, 0) / dogAgeInHuman.length;
+  console.log(`Average age:`, averageDogHumanAge, `years`);
+};
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+console.log(``);
+calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+/*
 // MAP method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
@@ -242,3 +265,9 @@ const balance = movements.reduce((accum, currentEl, i, arr) => {
   return accum + currentEl;
 }, 0); //Initial value of accum = 0
 console.log(balance);
+
+const max = movements.reduce((accum, mov) => {
+  return accum < mov ? mov : accum;
+}, movements[0]);
+console.log(max);
+*/
