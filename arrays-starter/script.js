@@ -95,7 +95,6 @@ console.log(account2.username);
 console.log(account3.username);
 console.log(account4.username);
 
-
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -219,3 +218,11 @@ const movementsDescriptions = movements.map(
     `Movement ${i + 1}: You ${mov > 0 ? `deposited` : `withdrew`} ${mov}`
 );
 console.log(movementsDescriptions);
+
+// FILTER method
+const deposits = movements.filter(mov => mov > 0);
+console.log(movements);
+console.log(deposits);
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(movements);
+console.log(withdrawals);
