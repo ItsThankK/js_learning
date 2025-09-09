@@ -78,6 +78,24 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// Computing usernames!/
+// const user = `Steven Thomas Williams`; // stw
+const createUsernames = function (accs) {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(` `)
+      .map(name => name.slice(0, 1))
+      .join(``);
+  });
+};
+createUsernames(accounts);
+console.log(account1.username);
+console.log(account2.username);
+console.log(account3.username);
+console.log(account4.username);
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -191,3 +209,13 @@ const checkDogs = function (dogsJulia, dogsKate) {
 // MAP method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
+
+const movementsUsd = movements.map(mov => mov * eurToUsd);
+console.log(movements);
+console.log(movementsUsd);
+
+const movementsDescriptions = movements.map(
+  (mov, i, _) =>
+    `Movement ${i + 1}: You ${mov > 0 ? `deposited` : `withdrew`} ${mov}`
+);
+console.log(movementsDescriptions);
