@@ -95,8 +95,13 @@ console.log(account1.username);
 console.log(account2.username);
 console.log(account3.username);
 console.log(account4.username);
+
 // Calc the movements, display sum in the UI/
-const calcPrint
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((accum, mov) => accum + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
