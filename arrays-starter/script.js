@@ -61,6 +61,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+// Display movements!/
 const displayMovements = function (movements) {
   containerMovements.innerHTML = ``; // set to empty
   movements.forEach(function (mov, i) {
@@ -94,6 +95,8 @@ console.log(account1.username);
 console.log(account2.username);
 console.log(account3.username);
 console.log(account4.username);
+// Calc the movements, display sum in the UI/
+const calcPrint
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -226,3 +229,11 @@ console.log(deposits);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(movements);
 console.log(withdrawals);
+
+// REDUCE method
+// Instead of e, i, a - accumulator, e, i, a
+const balance = movements.reduce((accum, currentEl, i, arr) => {
+  console.log(`Iteration: ${i}: Accumulator ${accum}`);
+  return accum + currentEl;
+}, 0); //Initial value of accum = 0
+console.log(balance);
