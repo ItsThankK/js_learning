@@ -71,7 +71,7 @@ const displayMovements = function (movements) {
           <div class="movements__type movements__type--${type}">${
       i + 1
     } tx - ${type}</div>
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">${mov}€</div>
         </div>
     `;
     containerMovements.insertAdjacentHTML(`afterbegin`, html);
@@ -100,12 +100,31 @@ console.log(account4.username);
 // Calc the movements, display sum in the UI/
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((accum, mov) => accum + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter(int => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
+// ///////////////////////////////////////////////
+// ///////////////////////////////////////////////
 // LECTURES
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -187,7 +206,7 @@ currenciesUnique.forEach(function (value) {
 */
 
 // CHALLENGE 1
-
+/*
 // Test data 1
 // const JuliasData = [3, 5, 2, 12, 7];
 // const KatesData = [4, 1, 15, 8, 3];
@@ -235,6 +254,7 @@ const calcAverageHumanAge = function (dogsAges) {
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 console.log(``);
 calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+*/
 /*
 // MAP method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -270,4 +290,12 @@ const max = movements.reduce((accum, mov) => {
   return accum < mov ? mov : accum;
 }, movements[0]);
 console.log(max);
+*/
+/*
+const eurToUsd = 1.1;
+// PIPELINE or CHAINING
+const totalDepositsUsd = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((accum, mov) => accum + mov, 0);
 */
