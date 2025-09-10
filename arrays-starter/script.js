@@ -206,7 +206,7 @@ currenciesUnique.forEach(function (value) {
 */
 
 // CHALLENGE 1
-/*
+
 // Test data 1
 // const JuliasData = [3, 5, 2, 12, 7];
 // const KatesData = [4, 1, 15, 8, 3];
@@ -251,10 +251,27 @@ const calcAverageHumanAge = function (dogsAges) {
     }, 0) / dogAgeInHuman.length;
   console.log(`Average age:`, averageDogHumanAge, `years`);
 };
-calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
-console.log(``);
-calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
-*/
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// console.log(``);
+// calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+// CHALLENGE 3
+const calcAverageHumanAge2 = dogsAges =>
+  dogsAges
+    .map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+    .filter(dogHumanAge => dogHumanAge >= 18)
+    .reduce((accum, dog, _, arr) => accum + dog / arr.length, 0);
+
+console.log(
+  `Average age:`,
+  calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]),
+  `years`
+);
+console.log(
+  `Average age:`,
+  calcAverageHumanAge2([16, 6, 10, 5, 6, 1, 4]),
+  `years`
+);
 /*
 // MAP method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
