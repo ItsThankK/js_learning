@@ -90,8 +90,8 @@ const createUsernames = function (accs) {
       .join(``);
   });
 };
-/*
 createUsernames(accounts);
+/*
 console.log(account1.username);
 console.log(account2.username);
 console.log(account3.username);
@@ -206,7 +206,7 @@ currenciesUnique.forEach(function (value) {
 */
 
 // CHALLENGE 1
-
+/*
 // Test data 1
 // const JuliasData = [3, 5, 2, 12, 7];
 // const KatesData = [4, 1, 15, 8, 3];
@@ -272,6 +272,7 @@ console.log(
   calcAverageHumanAge2([16, 6, 10, 5, 6, 1, 4]),
   `years`
 );
+*/
 /*
 // MAP method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -315,4 +316,16 @@ const totalDepositsUsd = movements
   .filter(mov => mov > 0)
   .map(mov => mov * eurToUsd)
   .reduce((accum, mov) => accum + mov, 0);
+*/
+/*
+// find
+// returns a new array containing only the first element that satisfies the condition
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+const account = accounts.find(acc => acc.owner === `Jessica Davis`);
+console.log(account);
 */
