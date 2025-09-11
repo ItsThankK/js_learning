@@ -98,9 +98,9 @@ console.log(account3.username);
 console.log(account4.username);
 */
 // Calc the movements, display sum in the UI/
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((accum, mov) => accum + mov, 0);
-  labelBalance.textContent = `${balance}€`;
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((accum, mov) => accum + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 };
 // calcDisplayBalance(account1.movements);
 
@@ -126,6 +126,15 @@ const calcDisplaySummary = function (acc) {
 };
 // calcDisplaySummary(account1.movements);
 
+const updateUi = function (acc) {
+  // Display movements
+  displayMovements(acc.movements);
+  // Summary
+  calcDisplaySummary(acc);
+  // Balance
+  calcDisplayBalance(acc);
+};
+
 // Event handlers
 let currentAccount;
 
@@ -144,12 +153,8 @@ btnLogin.addEventListener(`click`, function (e) {
     }`;
     labelWelcome.style.color = `#9be15d`;
     containerApp.style.opacity = `1`;
-    // Display movements
-    displayMovements(currentAccount.movements);
-    // Summary
-    calcDisplaySummary(currentAccount);
-    // Balance
-    calcDisplayBalance(currentAccount.movements);
+
+    updateUi(currentAccount);
     // Clear the input fields
     inputLoginPin.value = inputLoginUsername.value = ``;
     // remove the cursor focus
@@ -160,6 +165,32 @@ btnLogin.addEventListener(`click`, function (e) {
   }
 });
 
+btnTransfer.addEventListener(`click`, function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+  const recieverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = ``;
+  inputTransferAmount.blur();
+
+  if (
+    amount > 0 &&
+    recieverAcc &&
+    currentAccount.balance >= amount &&
+    currentAccount.username !== recieverAcc?.username
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    recieverAcc.movements.push(amount);
+    console.log(`Transfer of ${amount} successful 👍`);
+
+    updateUi(currentAccount);
+  } else {
+    console.log(`Transfer invalid`);
+  }
+});
 // ///////////////////////////////////////////////
 // ///////////////////////////////////////////////
 // LECTURES
