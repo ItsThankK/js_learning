@@ -62,9 +62,11 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 // Display movements!/
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = ``; // set to empty
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice(0).sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? `deposit` : `withdrawal`;
     const html = `
         <div class="movements__row">
@@ -232,6 +234,14 @@ btnClose.addEventListener(`click`, function (e) {
     console.log(` `);
   }
   inputCloseUsername.value = inputClosePin.value = ``;
+});
+
+let sorted = false;
+btnSort.addEventListener(`click`, function (e) {
+  e.preventDefault();
+
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 // ///////////////////////////////////////////////
 // ///////////////////////////////////////////////
@@ -441,8 +451,8 @@ console.log(account);
 */
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-console.log(movements);
-
+// console.log(movements);
+/*
 // Checks equality
 console.log(movements.includes(-130));
 
@@ -474,3 +484,26 @@ console.log(
 console.log(
   accounts.flatMap(acc => acc.movements).reduce((accum, el) => accum + el, 0)
 );
+// Sorting arrays
+// Stringd
+const owners = [`Jonas`, `Zach`, `Adam`, `Martha`];
+console.log(owners.sort()); // mutates owners array
+// Numbers
+console.log(movements);
+// console.log(movements.sort()); // converts num to string b4 sorting 1,2,3
+
+// From Jonas
+// return < 0 : a b4 b
+// return > 0 : b b4 a
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (b > a) return -1;
+})
+
+// From bro code Yt [Simpler]
+// Imagine a, b is 1, 2
+// 1 - 2 = -1 : so its sorted in ascending order (- to +)
+// 2 - 1 = 1 : so its sorted in descending order (+ to -)
+// movements.sort((a, b) => a - b);
+console.log(movements);
+*/
