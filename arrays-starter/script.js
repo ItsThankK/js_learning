@@ -507,3 +507,26 @@ movements.sort((a, b) => {
 // movements.sort((a, b) => a - b);
 console.log(movements);
 */
+// Creating/ generating new arrays programmatically
+const x = new Array(7);
+console.log(x);
+x.fill(1, 3, 4);
+console.log(x);
+
+// from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+// from on iterables/ arrayLike object
+labelBalance.addEventListener(`click`, function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll(`.movements__value`),
+    el => Number(el.textContent.replace(`€`, ``))
+  );
+  console.log(movementsUI);
+
+  const movementsUI2 = [...document.querySelectorAll(`.movements__value`)];
+  console.log(movementsUI2);
+});
