@@ -105,8 +105,7 @@ const calcDisplayBalance = function (acc) {
 // calcDisplayBalance(account1.movements);
 
 const calcDisplaySummary = function (acc) {
-  console.log(acc);
-
+  // console.log(acc);
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
@@ -145,7 +144,6 @@ btnLogin.addEventListener(`click`, function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and welcome message
     labelWelcome.textContent = `Welcome back, ${
@@ -159,9 +157,13 @@ btnLogin.addEventListener(`click`, function (e) {
     inputLoginPin.value = inputLoginUsername.value = ``;
     // remove the cursor focus
     inputLoginPin.blur();
-    console.log(`LOGIN`);
+    console.log(`LOGIN successful 🙂`);
+    console.log(` `);
   } else {
-    console.log(`wrong pin`);
+    console.log(
+      `Can't login --- wrong username, pin or account no longer exists! 👮🛑`
+    );
+    console.log(` `);
   }
 });
 
@@ -185,11 +187,28 @@ btnTransfer.addEventListener(`click`, function (e) {
     currentAccount.movements.push(-amount);
     recieverAcc.movements.push(amount);
     console.log(`Transfer of ${amount} successful 👍`);
+    console.log(` `);
 
     updateUi(currentAccount);
   } else {
-    console.log(`Transfer invalid`);
+    console.log(`Transfer invalid 😫❌`);
+    console.log(` `);
   }
+});
+
+btnLoan.addEventListener(`click`, function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= 0.1 * amount)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+    updateUi(currentAccount);
+    console.log(`Loan granted 🎉 and credited 💰`);
+    console.log(` `);
+  }
+  inputLoanAmount.value = ``;
 });
 
 btnClose.addEventListener(`click`, function (e) {
@@ -204,11 +223,15 @@ btnClose.addEventListener(`click`, function (e) {
     );
     // Delete account
     accounts.splice(index, 1);
-    console.log(`Deleted ${currentAccount.owner} account! 💔`);
+    console.log(`Deleted ${currentAccount.owner.toUpperCase()}'s account! 💔`);
+    console.log(` `);
     // Hide UI
     containerApp.style.opacity = 0;
+  } else {
+    console.log(`Wrong username or pin! ✖`);
+    console.log(` `);
   }
-  inputCloseUsername = inputClosePin = ``;
+  inputCloseUsername.value = inputClosePin.value = ``;
 });
 // ///////////////////////////////////////////////
 // ///////////////////////////////////////////////
