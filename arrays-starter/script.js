@@ -459,3 +459,18 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+// flat method
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+console.log(
+  accounts
+    .map(acc => acc.movements)
+    .flat()
+    .reduce((accum, el) => accum + el, 0)
+);
+// flatMap method
+console.log(
+  accounts.flatMap(acc => acc.movements).reduce((accum, el) => accum + el, 0)
+);
