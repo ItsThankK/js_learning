@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${(mov).toFixed(2)}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -121,7 +121,7 @@ const calcDisplaySummary = function (acc) {
   const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter((int) => {
+    .filter(int => {
       // console.log(arr);
       return int >= 1;
     })
@@ -304,5 +304,22 @@ console.log(Math.trunc(-23.3));
 console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3));
 console.log(+(2.345).toFixed(2));
-*/  
 
+// The remainder operator
+console.log(5 % 2);
+console.log(6 % 2);
+console.log(7 % 2);
+
+const isEven = n => (n % 2 === 0 ? `even` : `odd`);
+console.log(isEven(9));
+console.log(isEven(8));
+
+labelBalance.addEventListener(`click`, function () {
+  [...document.querySelectorAll(`.movements__row`)].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = `orangered`;
+    if (i % 2 === 0) row.style.backgroundColor = `blue`;
+  });
+});
+*/
+
+// 
