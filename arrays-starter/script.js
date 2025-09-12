@@ -393,6 +393,76 @@ console.log(
   `years`
 );
 */
+
+// CHALLENGE 4
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+console.log(`Number 1`);
+dogs.forEach(dog => (dog.recommendedFood = dog.weight ** 0.75 * 28));
+console.log(dogs);
+console.log(``);
+
+console.log(`Number 2`);
+const findSarahsDog = dogs
+  .filter(dog => dog.owners.includes(`Sarah`))
+  .map(dog =>
+    dog.curFood > dog.recommendedFood
+      ? `Dog is eaing too much`
+      : `Dog is eaing too little`
+  )
+  .join();
+console.log(findSarahsDog);
+console.log(``);
+
+console.log(`Number 3`);
+const ownersEatTooMuch = [];
+const ownersEatTooLittle = [];
+dogs.map(dog =>
+  dog.curFood > dog.recommendedFood
+    ? ownersEatTooMuch.push(...dog.owners)
+    : ownersEatTooLittle.push(...dog.owners)
+);
+console.log(ownersEatTooMuch);
+console.log(ownersEatTooLittle);
+console.log();
+
+console.log(`Number 4`);
+console.log(`${ownersEatTooMuch.join(` and `)} dogs eat too much`);
+console.log(`${ownersEatTooLittle.join(` and `)} dogs eat too little`);
+console.log(``);
+
+console.log(`Number 5`);
+console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
+console.log(``);
+
+console.log(`Number 6`);
+console.log(
+  dogs.some(
+    dog =>
+      dog.curFood > dog.recommendedFood * 0.9 &&
+      dog.curFood < dog.recommendedFood * 1.1
+  )
+);
+console.log();
+
+console.log(`Number 7`);
+console.log(
+  dogs.filter(
+    dog =>
+      dog.curFood > dog.recommendedFood * 0.9 &&
+      dog.curFood < dog.recommendedFood * 1.1
+  )
+);
+console.log(``);
+
+console.log(`Number 8`);
+console.log(dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood));
+
 /*
 // MAP method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -507,6 +577,7 @@ movements.sort((a, b) => {
 // movements.sort((a, b) => a - b);
 console.log(movements);
 */
+/*
 // Creating/ generating new arrays programmatically
 const x = new Array(7);
 console.log(x);
@@ -530,3 +601,4 @@ labelBalance.addEventListener(`click`, function () {
   const movementsUI2 = [...document.querySelectorAll(`.movements__value`)];
   console.log(movementsUI2);
 });
+*/
