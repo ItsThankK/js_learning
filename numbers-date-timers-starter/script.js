@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${(mov).toFixed(2)}€</div>
       </div>
     `;
 
@@ -111,22 +111,22 @@ const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter((int, i, arr) => {
+    .filter((int) => {
       // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -206,7 +206,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = +inputLoanAmount.value;
+  const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -251,7 +251,7 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
+/*
 // converting to numbers
 console.log(23 === 23.0);
 console.log(Number(`23`));
@@ -274,3 +274,35 @@ console.log(Number.isFinite(23 / 0));
 
 console.log(Number.isInteger(23));
 console.log(Number.isInteger(23 / 0));
+
+// maths and rounding numbers
+console.log(Math.sqrt(9));
+console.log(25 ** (1 / 2));
+console.log(25 ** (1 / 3));
+console.log(Math.max(5, 18, `23`, 11, 2)); //no parsing
+console.log(Math.min(5, 18, `23`, 11, 2));
+console.log(Math.PI * Number.parseFloat(`10px`) ** 2);
+console.log(Math.trunc(Math.random() * 6) + 1);
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min) + 1) + min;
+console.log(randomInt(10, 20));
+
+// rounding integers
+// they all do type coersion
+console.log(Math.round(23.3));
+console.log(Math.round(23.9));
+
+console.log(Math.ceil(23.3));
+console.log(Math.ceil(23.9));
+
+console.log(Math.floor(23.9));
+console.log(Math.floor(-23.3));
+// trunc and floor are similar for positive numbers
+console.log(Math.trunc(-23.3));
+
+// rounding decimals
+console.log((2.7).toFixed(0));
+console.log((2.7).toFixed(3));
+console.log(+(2.345).toFixed(2));
+*/  
+
