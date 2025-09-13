@@ -182,15 +182,40 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+let timer;
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = `${Math.floor(time / 60)}`.padStart(2, `0`);
+    const sec = `${time % 60}`.padStart(2, `0`);
+    // print the remaining time
+    labelTimer.textContent = `${min}:${sec}`;
 
+    // when timer expires, stop timer and logout user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = `Log in to get started`;
+      containerApp.style.opacity = `0`;
+    }
+    // decrease 1 sec
+    time--;
+  };
+
+  // set time to 5 mins
+  let time = 30;
+  // call timer every sec
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
 
 // FAKE ALWAYS LOGGED IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 1;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 1;
+
 // experimenting with the intl api
 // const now = new Date();
 // const options = {
@@ -223,6 +248,9 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
 
     // Update UI
     updateUI(currentAccount);
@@ -273,6 +301,10 @@ btnTransfer.addEventListener('click', function (e) {
     receiverAcc.movementsDates.push(new Date().toISOString());
     // Update UI
     updateUI(currentAccount);
+
+    // reset timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -292,6 +324,10 @@ btnLoan.addEventListener('click', function (e) {
     }, 2500);
   }
   inputLoanAmount.value = '';
+
+  // reset timer
+  clearInterval(timer);
+  timer = startLogOutTimer();
 });
 
 btnClose.addEventListener('click', function (e) {
@@ -504,4 +540,3 @@ setInterval(() => {
 }, 1000);
 */
 // setting a countdown
-
