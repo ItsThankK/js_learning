@@ -180,6 +180,18 @@ let currentAccount;
 currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 1;
+// experimenting with the intl api
+// const now = new Date();
+// const options = {
+//   hour: `numeric`,
+//   minute: `numeric`,
+//   day: `numeric`,
+//   month: `long`,
+//   year: `numeric`,
+//   weekday: `long`
+// }
+// const locale = navigator.language;
+// labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now)
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -205,13 +217,26 @@ btnLogin.addEventListener('click', function (e) {
     updateUI(currentAccount);
 
     // Create current date and time
-    const now = new Date();
-    const day = `${now.getDate()}`.padStart(2, `0`);
-    const month = `${now.getMonth()}`.padStart(2, `0`); // 0 based or indexed
-    const year = now.getFullYear();
-    const hour = `${now.getHours()}`.padStart(2, `0`);
-    const min = `${now.getMinutes()}`.padStart(2, `0`);
-    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`; // day/month/year
+    const options = {
+      hour: `numeric`,
+      minute: `numeric`,
+      day: `numeric`,
+      month: `long`,
+      year: `numeric`,
+      weekday: `long`,
+    };
+    // const locale = navigator.language; // from the browser
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(new Date());
+    // const now = new Date();
+    // const day = `${now.getDate()}`.padStart(2, `0`);
+    // const month = `${now.getMonth()}`.padStart(2, `0`); // 0 based or indexed
+    // const year = now.getFullYear();
+    // const hour = `${now.getHours()}`.padStart(2, `0`);
+    // const min = `${now.getMinutes()}`.padStart(2, `0`);
+    // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`; // day/month/year
   }
 });
 
@@ -430,3 +455,5 @@ console.log(+future);
 const days1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 14));
 console.log(days1);
 */
+
+// working with international dates
