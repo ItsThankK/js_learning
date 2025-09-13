@@ -320,7 +320,6 @@ labelBalance.addEventListener(`click`, function () {
     if (i % 2 === 0) row.style.backgroundColor = `blue`;
   });
 });
-*/
 
 // numeric separators
 const diameter = 287_460_000_000;
@@ -334,3 +333,51 @@ const transferFee2 = 1_500;
 
 // const PI = 3._1415 ❌
 // console.log(Number(`2_300`)); ❌
+
+// BIGINT
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(4903573204520395034573245072345072340523405n);
+console.log(BigInt(4903573204520395034573245072345072340523405n));
+
+// Operations
+console.log(10_000n + 10000n);
+console.log(4534890752450982374n * 403452837459n);
+const num = 23;
+const huge = 52804784847748487478n;
+console.log(huge * BigInt(num));
+
+// divisions
+console.log(10n / 3n);
+console.log(10 / 3);
+*/
+/*
+// Creating dates
+const now = new Date();
+console.log(now);
+console.log(new Date(`Aug 02 2020 18:05:41`));
+console.log(new Date(`December 24, 2015`));
+console.log(new Date(account1.movementsDates[0]));
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+console.log(new Date(2037, 10, 31)); // auto correct to december
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); // a time stamp
+
+// working with dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+// console.log(future.getYear()); //never use this ❌`
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay()); // day of the week
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime()); // timestamp - miliseconds since Jan 1, 1970
+console.log(new Date(future.getTime()));
+console.log(Date.now()); // timestamp at this moment
+future.setFullYear(2040);
+console.log(future);
+*/
