@@ -128,7 +128,6 @@ const handleHover = function (e) {
     siblings.forEach(el => {
       if (el !== link) el.style.opacity = `${this}`;
     });
-
     logo.style.opacity = `${this}`;
   }
 };
@@ -138,6 +137,18 @@ const handleHover = function (e) {
 nav.addEventListener(`mouseover`, handleHover.bind(0.5));
 // opposite of mouseover
 nav.addEventListener(`mouseout`, handleHover.bind(1));
+
+// sticky navigation - the scroll event
+const initialCoords = section1.getBoundingClientRect();
+// console.log(window.screenY);
+// console.log(initialCoords.top);
+
+window.addEventListener(`scroll`, function () {
+  console.log(`scrl`);
+
+  if (window.scrollY > initialCoords.top) nav.classList.add(`sticky`);
+  else nav.classList.remove(`sticky`);
+});
 
 ////////////////////////////////////////////////////
 // selecting elements
