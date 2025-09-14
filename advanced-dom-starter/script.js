@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const nav = document.querySelector(`.nav`);
 
 const openModal = function (e) {
   e.preventDefault();
@@ -111,6 +112,32 @@ tabsContainer.addEventListener(`click`, function (e) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add(`operations__content--active`);
 });
+
+// menu fade animation
+
+// refactoring
+const handleHover = function (e) {
+  // console.log(e); mouse event
+  // console.log(this); opacity
+
+  if (e.target.classList.contains(`nav__link`)) {
+    const link = e.target;
+    const siblings = link.closest(`.nav`).querySelectorAll(`.nav__link`);
+    const logo = link.closest(`.nav`).querySelector(`img`);
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = `${this}`;
+    });
+
+    logo.style.opacity = `${this}`;
+  }
+};
+// because of bind - e is the event passed
+// this is the opacity
+// only 1 argument is allowed
+nav.addEventListener(`mouseover`, handleHover.bind(0.5));
+// opposite of mouseover
+nav.addEventListener(`mouseout`, handleHover.bind(1));
 
 ////////////////////////////////////////////////////
 // selecting elements
