@@ -60,7 +60,7 @@ btnScrollTo.addEventListener(`click`, function (e) {
   //   behavior: `smooth`,
   // });
 
-  section1.scrollIntoView({behavior: `smooth`})
+  section1.scrollIntoView({ behavior: `smooth` });
 });
 
 ////////////////////////////////////////////////////
@@ -148,3 +148,25 @@ logo.classList.contains(`c`);
 
 // logo.className = `jonas`; // do not use!
 */
+
+// Events
+const h1 = document.querySelector(`h1`);
+
+// old method
+// h1.onmouseenter = e =>
+//   alert(`addEventlistener: Great! You are reading the heading`);
+
+// new method
+// h1.addEventListener(`mouseenter`, function (e) {
+//   alert(`addEventlistener: Great! You are reading the heading`);
+// });
+
+const alertH1 = function (e) {
+  alert(`addEventlistener: Great! You are reading the heading`);
+
+  h1.removeEventListener(`mouseenter`, alertH1);
+};
+
+h1.addEventListener(`mouseenter`, alertH1);
+
+setTimeout(() => h1.removeEventListener(`mouseenter`, alertH1), 10000);
