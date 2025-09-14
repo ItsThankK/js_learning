@@ -30,6 +30,39 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+const btnScrollTo = document.querySelector(`.btn--scroll-to`);
+const section1 = document.querySelector(`#section--1`);
+
+btnScrollTo.addEventListener(`click`, function (e) {
+  const slcoords = section1.getBoundingClientRect();
+  // console.log(slcoords);
+
+  // console.log(e.target.getBoundingClientRect());
+
+  // console.log(`current scroll (x/y)`, window.pageXOffset, pageYOffset);
+
+  // console.log(
+  //   `height/ width`,
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+
+  // scrolling
+  // window.scrollTo(
+  //   slcoords.left + window.pageXOffset,
+  //   slcoords.top + window.pageYOffset
+  // );
+
+  // old method
+  // window.scrollTo({
+  //   left: slcoords.left + window.pageXOffset,
+  //   top: slcoords.top + window.pageYOffset,
+  //   behavior: `smooth`,
+  // });
+
+  section1.scrollIntoView({behavior: `smooth`})
+});
+
 ////////////////////////////////////////////////////
 // selecting elements
 /*
@@ -47,7 +80,6 @@ console.log(allButtons);
 
 console.log(document.getElementsByClassName(`btn`));
 
-*/
 // creating and inserting elements
 
 // .insertAdjacentHTML
@@ -66,11 +98,11 @@ header.after(message);
 
 // deleting elements
 document
-  .querySelector(`.btn--close-cookie`)
-  .addEventListener(`click`, function () {
-    // message.remove() //new method
-    message.parentElement.removeChild(message); // old method
-  });
+.querySelector(`.btn--close-cookie`)
+.addEventListener(`click`, function () {
+  // message.remove() //new method
+  message.parentElement.removeChild(message); // old method
+});
 
 // styles
 message.style.backgroundColor = `#37383d`;
@@ -80,7 +112,7 @@ message.style.width = `120%`;
 // console.log(getComputedStyle(message).color);
 
 message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + `px`;
+Number.parseFloat(getComputedStyle(message).height, 10) + 30 + `px`;
 
 // console.log(getComputedStyle(message).height);
 
@@ -115,4 +147,4 @@ logo.classList.toggle(`c`);
 logo.classList.contains(`c`);
 
 // logo.className = `jonas`; // do not use!
-
+*/
