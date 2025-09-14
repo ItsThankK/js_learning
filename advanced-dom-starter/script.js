@@ -46,8 +46,8 @@ const allButtons = document.getElementsByTagName(`button`);
 console.log(allButtons);
 
 console.log(document.getElementsByClassName(`btn`));
-*/
 
+*/
 // creating and inserting elements
 
 // .insertAdjacentHTML
@@ -71,3 +71,48 @@ document
     // message.remove() //new method
     message.parentElement.removeChild(message); // old method
   });
+
+// styles
+message.style.backgroundColor = `#37383d`;
+message.style.width = `120%`;
+
+// console.log(message.style.backgroundColor);
+// console.log(getComputedStyle(message).color);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + `px`;
+
+// console.log(getComputedStyle(message).height);
+
+document.documentElement.style.setProperty(`--color-primary`, `orangered`);
+
+//  attributes classes
+const logo = document.querySelector(`.nav__logo`);
+console.log(logo.alt);
+console.log(logo.className);
+
+console.log(logo.designer); // undefined - not a standard artribute
+logo.setAttribute(`designer`, `Bankist`);
+console.log(logo.getAttribute`designer`);
+
+logo.alt = `Beautiful minimalist logo`;
+
+console.log(logo.src);
+console.log(logo.getAttribute(`src`));
+
+const link = document.querySelector(`.nav__link--btn`);
+console.log(link.href);
+console.log(link.getAttribute(`href`));
+
+// data attributes
+logo.setAttribute(`data-version-number`, `3.0`);
+console.log(logo.dataset.versionNumber);
+
+// classes
+logo.classList.add(`c`);
+logo.classList.remove(`c`);
+logo.classList.toggle(`c`);
+logo.classList.contains(`c`);
+
+// logo.className = `jonas`; // do not use!
+
