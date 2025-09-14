@@ -150,6 +150,7 @@ logo.classList.contains(`c`);
 */
 
 // Events
+/*
 const h1 = document.querySelector(`h1`);
 
 // old method
@@ -170,3 +171,33 @@ const alertH1 = function (e) {
 h1.addEventListener(`mouseenter`, alertH1);
 
 setTimeout(() => h1.removeEventListener(`mouseenter`, alertH1), 10000);
+*/
+
+// Bubbling
+// event propagation: bubbling and capturing
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () =>
+  `rgba(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+console.log(randomColor());
+
+document.querySelector(`.nav__link`).addEventListener(`click`, function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log(`link`, e.target, e.currentTarget);
+
+  // stop propagation
+  // e.stopPropagation(); 
+});
+
+document.querySelector(`.nav__links`).addEventListener(`click`, function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log(`container`, e.target, e.currentTarget);
+});
+
+document.querySelector(`.nav`).addEventListener(`click`, function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log(`nav`, e.target, e.currentTarget);
+}, true);
