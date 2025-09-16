@@ -178,13 +178,13 @@ const observerHeading = new IntersectionObserver(
   }
 );
 observerHeading.observe(header);
+
 // ////////////////////////////////
 // reveal sections
 const allSections = document.querySelectorAll(`section`);
 
 const revealSection = function (entries, observer) {
   const [entry] = [...entries];
-  console.log(entry);
 
   if (!entry.isIntersecting) return;
   entry.target.classList.remove(`section--hidden`);
@@ -200,6 +200,36 @@ allSections.forEach(section => {
   section.classList.add(`section--hidden`);
   sectionObserver.observe(section);
 });
+
+// lazy loading images
+const images = document.querySelectorAll(`.features__img`);
+
+const imageObserver = new IntersectionObserver(
+  function (entries, imgObserver) {
+    const [entry] = [...entries];
+
+    if (!entry.isIntersecting) return;
+
+    entry.target.setAttribute(`src`, entry.target.dataset.src);
+
+    entry.target.addEventListener(`load`, function () {
+      entry.target.classList.remove(`lazy-img`);
+    });
+
+    imgObserver.unobserve(entry.target);
+  },
+  {
+    root: null,
+    threshold: 1,
+  }
+);
+
+images.forEach(image => {
+  imageObserver.observe(image);
+});
+
+// /////////////////////////////////////////
+//
 
 ////////////////////////////////////////////////////
 // selecting elements
