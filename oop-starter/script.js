@@ -25,3 +25,22 @@ console.log(maltilda, jack);
 const j = 1;
 console.log(jonas instanceof Person); //true
 console.log(j instanceof Person); //false
+
+// prototypes
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+jonas.calcAge();
+console.log(jonas.__proto__);
+console.log(jonas.__proto__ === Person.prototype); //true
+console.log(Person.prototype.isPrototypeOf(jonas)); //true
+
+Person.prototype.species = `Homo Sapiens`;
+console.log(jonas);
+console.log(jonas.__proto__);
+console.log(jonas.hasOwnProperty(`firstName`)); //true
+console.log(jonas.hasOwnProperty(`species`)); // false
+ 
