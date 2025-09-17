@@ -515,3 +515,9 @@ window.addEventListener(`load`, function (e) {
 //   console.log(e);
 // });
 */
+
+/**
+ * script defer in head - best
+ * script in body end - better because of old browsers
+ * script asyn in head - meh 😑
+ */
