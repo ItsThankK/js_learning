@@ -115,7 +115,7 @@ class PersonCl {
     this.fullName = fullName;
     this.birthYear = birthYear;
   }
-
+  // Instance methods - Methods that will be added to the .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
   }
@@ -132,6 +132,10 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+  // static method - Instances can't use them
+  static hey() {
+
+  }
 }
 
 const jessica = new PersonCl(`Jessica Davis`, 1996);
@@ -147,6 +151,15 @@ jessica.fullName = `jes dav`;
 console.log(jessica._fullName);
 console.log(jessica.fullName);
 
+// static methods
+// methods that are tied to the constructor
+PersonCl.hey = function () {
+  console.log(`Hey there 👋`);
+  console.log(this);
+  
+};
+PersonCl.hey();
+// jessica.hey(); // cant call it
 
 /**
  * 1. classes are not hoisted
