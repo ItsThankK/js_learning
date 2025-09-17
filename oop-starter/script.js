@@ -103,5 +103,37 @@ car2.accelerate();
 car2.brake();
 car2.accelerate();
 car2.brake();
+
+// ES6 classes
+
+// class espression
+// const PersonCl1 = class {};
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
+
+const jessica = new PersonCl(`Jessica`, 1996);
+console.log(jessica);
+jessica.calcAge();
+
+PersonCl.prototype.greet = function () {
+  console.log(`Hey ${this.firstName}`);
+};
+
+jessica.greet();
 */
 
+/**
+ * 1. classes are not hoisted
+ * 2. classes are first class citizens
+ * 3. classes are executed in strict mode
+ */
