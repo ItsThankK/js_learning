@@ -69,3 +69,39 @@ const h1 = document.querySelector(`h1`)
 console.dir(h1);
 console.dir(x => x + 1);
 */
+
+// CHALLENGE 1
+/*
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Car.prototype.accelerate = function () {
+  console.log((this.speed += 10));
+};
+
+Car.prototype.brake = function () {
+  console.log((this.speed -= 5));
+};
+
+const car1 = new Car(`BMW`, 120);
+const car2 = new Car(`Mercedes`, 95);
+
+console.log(car1);
+car1.accelerate();
+car1.brake();
+car1.accelerate();
+car1.brake();
+car1.accelerate();
+car1.brake();
+console.log(``);
+console.log(car2);
+car2.accelerate();
+car2.brake();
+car2.accelerate();
+car2.brake();
+car2.accelerate();
+car2.brake();
+*/
+
