@@ -70,41 +70,6 @@ console.dir(h1);
 console.dir(x => x + 1);
 */
 
-// CHALLENGE 1
-/*
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
-
-Car.prototype.accelerate = function () {
-  console.log((this.speed += 10));
-};
-
-Car.prototype.brake = function () {
-  console.log((this.speed -= 5));
-};
-
-const car1 = new Car(`BMW`, 120);
-const car2 = new Car(`Mercedes`, 95);
-
-console.log(car1);
-car1.accelerate();
-car1.brake();
-car1.accelerate();
-car1.brake();
-car1.accelerate();
-car1.brake();
-console.log(``);
-console.log(car2);
-car2.accelerate();
-car2.brake();
-car2.accelerate();
-car2.brake();
-car2.accelerate();
-car2.brake();
-*/
-
 // ES6 classes
 // class espression
 // const PersonCl1 = class {};
@@ -196,7 +161,7 @@ const account = {
   get latest() {
     return this.movements[this.movements.length - 1];
   },
-
+  
   set latest(mov) {
     this.movements[this.movements.length - 1] = mov;
   },
@@ -206,3 +171,76 @@ console.log(account.latest);
 account.latest = 50;
 console.log(account.latest);
 */
+
+// CHALLENGE 1
+/*
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Car.prototype.accelerate = function () {
+  console.log((this.speed += 10));
+};
+
+Car.prototype.brake = function () {
+  console.log((this.speed -= 5));
+};
+
+const car1 = new Car(`BMW`, 120);
+const car2 = new Car(`Mercedes`, 95);
+
+console.log(car1);
+car1.accelerate();
+car1.brake();
+car1.accelerate();
+car1.brake();
+car1.accelerate();
+car1.brake();
+console.log(``);
+console.log(car2);
+car2.accelerate();
+car2.brake();
+car2.accelerate();
+car2.brake();
+car2.accelerate();
+car2.brake();
+*/
+
+// CHALLENGE 2
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    console.log((this.speed += 10));
+  }
+
+  brake() {
+    console.log((this.speed -= 5));
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(newSpeed) {
+    this.speed = newSpeed * 1.6;
+  }
+}
+const ford = new CarCl(`Ford`, 120);
+
+console.log(`car: `, ford);
+ford.accelerate();
+ford.accelerate();
+ford.accelerate();
+ford.accelerate();
+ford.brake();
+ford.brake();
+ford.brake();
+ford.brake();
+console.log(`car: `, ford);
+console.log(ford.speedUS);
+console.log((ford.speedUS = 120));
