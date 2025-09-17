@@ -195,9 +195,9 @@ const sectionObserver = new IntersectionObserver(revealSection, {
   root: null,
   threshold: 0.15,
 });
-
+// FIXME
 allSections.forEach(section => {
-  section.classList.add(`section--hidden`);
+  // section.classList.add(`section--hidden`);
   sectionObserver.observe(section);
 });
 
@@ -229,8 +229,54 @@ images.forEach(image => {
 });
 
 // /////////////////////////////////////////
-//
+// slider component
 
+const slides = document.querySelectorAll(`.slide`);
+const btnLeft = document.querySelector(`.slider__btn--left`);
+const btnRight = document.querySelector(`.slider__btn--right`);
+
+let currentSlide = 0;
+const maxSlide = slides.length;
+
+// // FIXME
+// const slider = document.querySelector(`.slider`);
+// slider.style.transform = `scale(0.3) translateX(-100%)`;
+// slider.style.overflow = `visible`;
+
+// slides.forEach((s, i) => {
+//   s.style.transform = `translateX(${100 * i}%)`;
+// });
+
+const goToSlide = function (slide) {
+  slides.forEach((s, i) => {
+    s.style.transform = `translateX(${100 * (i - slide)}%)`;
+  });
+};
+
+goToSlide(0);
+
+const nextSlide = function () {
+  if (currentSlide === maxSlide - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  goToSlide(currentSlide);
+};
+
+const previousSlide = function () {
+  if (currentSlide === 0) {
+    currentSlide = maxSlide - 1;
+  } else {
+    currentSlide--;
+  }
+  goToSlide(currentSlide);
+};
+
+// next slide
+btnRight.addEventListener(`click`, nextSlide);
+// previous slide
+btnLeft.addEventListener(`click`, previousSlide);
 ////////////////////////////////////////////////////
 // selecting elements
 /*
