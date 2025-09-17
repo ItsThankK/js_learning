@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 // constructor fuctions & the new operator
 const Person = function (firstName, birthYear) {
   // Instance properties
@@ -43,4 +43,29 @@ console.log(jonas);
 console.log(jonas.__proto__);
 console.log(jonas.hasOwnProperty(`firstName`)); //true
 console.log(jonas.hasOwnProperty(`species`)); // false
- 
+
+// theory
+// prototypal inheritance and the prototype chain
+// prototypal inheritance on built in objects
+
+console.log(jonas.__proto__);
+console.log(jonas.__proto__.__proto__);
+console.log(jonas.__proto__.__proto__.__proto__);
+
+console.log(Person.prototype.constructor);
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 6, 4, 5, 6, 9, 3];
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique()); // not a good idea
+
+const h1 = document.querySelector(`h1`)
+console.dir(h1);
+console.dir(x => x + 1);
+*/
