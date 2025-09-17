@@ -277,6 +277,13 @@ const previousSlide = function () {
 btnRight.addEventListener(`click`, nextSlide);
 // previous slide
 btnLeft.addEventListener(`click`, previousSlide);
+
+//
+document.addEventListener(`keydown`, function (e) {
+  if (e.key === `ArrowRight`) nextSlide();
+  if (e.key === `ArrowLeft`) previousSlide();
+});
+
 ////////////////////////////////////////////////////
 // selecting elements
 /*
