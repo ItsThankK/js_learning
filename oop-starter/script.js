@@ -133,9 +133,7 @@ class PersonCl {
     return this._fullName;
   }
   // static method - Instances can't use them
-  static hey() {
-
-  }
+  static hey() {}
 }
 
 const jessica = new PersonCl(`Jessica Davis`, 1996);
@@ -156,10 +154,31 @@ console.log(jessica.fullName);
 PersonCl.hey = function () {
   console.log(`Hey there 👋`);
   console.log(this);
-  
 };
 PersonCl.hey();
 // jessica.hey(); // cant call it
+
+// Object.create
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = `Steven`;
+steven.birthYear = 2002;
+steven.calcAge();
+
+const sarah = Object.create(PersonProto);
+sarah.init(`Sarah`, 1979); // programmatically setting the properties
+sarah.calcAge();
 
 /**
  * 1. classes are not hoisted
