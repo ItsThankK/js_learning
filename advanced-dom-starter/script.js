@@ -498,3 +498,20 @@ console.log(h1.parentElement.children);
   }
 });
 */
+
+// lifecycle dom events
+/*
+document.addEventListener(`DOMContentLoaded`, function (e) {
+  // fired when html and js are fully loaded
+  console.log(`Html parsed and DOM tree built`, e);
+});
+
+window.addEventListener(`load`, function (e) {
+  console.log(`page fully loaded`, e);
+});
+
+// window.addEventListener(`beforeunload`, function (e) {
+//   e.preventDefault();
+//   console.log(e);
+// });
+*/
