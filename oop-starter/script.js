@@ -330,7 +330,7 @@ console.log(account.latest);
 */
 
 // CHALLENGE 1
-/*
+
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -376,6 +376,7 @@ class CarCl {
 
   brake() {
     console.log((this.speed -= 5));
+    return this;
   }
 
   get speedUS() {
@@ -420,10 +421,35 @@ EV.prototype.accelerate = function () {
   );
 };
 const tesla = new EV(`Tesla`, 120, 23);
-tesla.accelerate(); tesla.brake();
-tesla.chargeBattery(90); console.log(tesla.charge);
+tesla.accelerate();
+tesla.brake();
+tesla.chargeBattery(90);
+console.log(tesla.charge);
 
 console.log(tesla instanceof EV);
 console.log(tesla instanceof Car);
 console.log(tesla instanceof Object);
-*/
+
+console.log(``);
+console.log(`CHALLENGE 4... `.repeat(3));
+
+// CHALLENGE 4
+class EVCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.#charge}%`);
+    return this; 
+  }
+}
+const rivian = new EVCl(`Rivian`, 120, 23);
+rivian.accelerate().brake().accelerate().chargeBattery(19).accelerate().accelerate().accelerate().chargeBattery(100).brake().accelerate()
