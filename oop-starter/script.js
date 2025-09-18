@@ -229,38 +229,48 @@ jay.calcAge();
 
 // more class examples
 class Account {
+  // public fields - on the instances
+  locale = navigator.language;
+
+  // private fields
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     // protected property convention
-    this._pin = pin;
-    this._movements = [];
-    this.locale = navigator.language;
+    // this._pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
+    this.#pin = pin;
 
     console.log(`Thanks for opening and account ${owner}`);
   }
   // Public interface
+  // public methods
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
 
   withdraw(val) {
-    this._movements.push(-val);
-  }
-
-  _approveLoan(val) {
-    return true;
+    this.#movements.push(-val);
   }
 
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
+  }
+
+  // private method
+  #approveLoan(val) {
+    return true;
   }
 }
 
@@ -278,6 +288,13 @@ console.log(acc1);
 acc1.requestLoan(100);
 
 // encapsulation: protected properties and methods
+// encapsulation: private class fields and methods
+// Public fields and private fields
+// public methods and private methods
+// acc1.#movements.push(1) // not possible on private fields
+
+// --- static versions
+
 
 /**
  * 1. classes are not hoisted
