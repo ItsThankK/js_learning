@@ -208,7 +208,7 @@ console.log(account.latest);
 */
 
 // CHALLENGE 1
-/*
+
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -247,19 +247,19 @@ class CarCl {
     this.make = make;
     this.speed = speed;
   }
-  
+
   accelerate() {
     console.log((this.speed += 10));
   }
-  
+
   brake() {
     console.log((this.speed -= 5));
   }
-  
+
   get speedUS() {
     return this.speed / 1.6;
   }
-  
+
   set speedUS(newSpeed) {
     this.speed = newSpeed * 1.6;
   }
@@ -278,5 +278,29 @@ ford.brake();
 console.log(`car: `, ford);
 console.log(ford.speedUS);
 console.log((ford.speedUS = 120));
+console.log(``);
 
-// 
+// CHALLENGE 3
+console.log(`CHALLENGE 3... `.repeat(3));
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+EV.prototype = Object.create(Car.prototype);
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge -= 1;
+  console.log(
+    `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
+  );
+};
+const tesla = new EV(`Tesla`, 120, 23);
+tesla.accelerate(); tesla.brake();
+tesla.chargeBattery(90); console.log(tesla.charge);
+
+console.log(tesla instanceof EV);
+console.log(tesla instanceof Car);
+console.log(tesla instanceof Object);
