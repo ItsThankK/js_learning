@@ -180,6 +180,30 @@ console.log(mike instanceof Object);
 Student.prototype.constructor = Student;
 console.log(Student.prototype.constructor);
 
+// inheritance between classes: ES6 classes
+// we need the extend keyword and super function
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // needs to happen first - creates the this
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+
+  calcAge() {
+    console.log(`I am ${2037 - this.birthYear} years old`);
+  }
+}
+
+// still works
+// const martha = new StudentCl(`Martha Jones`, 2012);
+const martha = new StudentCl(`Martha Jones`, 2012, `Computer Engineering`);
+martha.introduce();
+martha.calcAge();
+
 /**
  * 1. classes are not hoisted
  * 2. classes are first class citizens
@@ -208,7 +232,7 @@ console.log(account.latest);
 */
 
 // CHALLENGE 1
-
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -304,3 +328,4 @@ tesla.chargeBattery(90); console.log(tesla.charge);
 console.log(tesla instanceof EV);
 console.log(tesla instanceof Car);
 console.log(tesla instanceof Object);
+*/
