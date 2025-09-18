@@ -232,22 +232,27 @@ class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    this.movements = [];
+    // protected property convention
+    this._pin = pin;
+    this._movements = [];
     this.locale = navigator.language;
 
     console.log(`Thanks for opening and account ${owner}`);
   }
   // Public interface
+  getMovements() {
+    return this._movements;
+  }
+
   deposit(val) {
-    this.movements.push(val);
+    this._movements.push(val);
   }
 
   withdraw(val) {
-    this.movements.push(-val);
+    this._movements.push(-val);
   }
 
-  approveLoan(val) {
+  _approveLoan(val) {
     return true;
   }
 
@@ -255,7 +260,6 @@ class Account {
     if (this.approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
-      
     }
   }
 }
@@ -273,6 +277,7 @@ console.log(acc1);
 // console.log(acc1.movements.reduce((a, e) => (a += e))); // works
 acc1.requestLoan(100);
 
+// encapsulation: protected properties and methods
 
 /**
  * 1. classes are not hoisted
