@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 // constructor fuctions & the new operator
 const Person = function (firstName, birthYear) {
   // Instance properties
@@ -65,10 +65,9 @@ Array.prototype.unique = function () {
 
 console.log(arr.unique()); // not a good idea
 
-const h1 = document.querySelector(`h1`)
+const h1 = document.querySelector(`h1`);
 console.dir(h1);
 console.dir(x => x + 1);
-*/
 
 // ES6 classes
 // class espression
@@ -145,6 +144,42 @@ const sarah = Object.create(PersonProto);
 sarah.init(`Sarah`, 1979); // programmatically setting the properties
 sarah.calcAge();
 
+// inheritance between classes: constructur functions
+const Person2 = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person2.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  // DRY
+  // this.firstName = firstName;
+  // this.birthYear = birthYear;
+  // using call to set the this keyword
+  Person2.call(this, firstName, birthYear);
+  this.course = course;
+};
+// linking prototypes
+Student.prototype = Object.create(Person2.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+const mike = new Student(`Mike`, 2020, `Computer Science`);
+console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person2);
+console.log(mike instanceof Object);
+
+Student.prototype.constructor = Student;
+console.log(Student.prototype.constructor);
+
 /**
  * 1. classes are not hoisted
  * 2. classes are first class citizens
@@ -205,7 +240,6 @@ car2.accelerate();
 car2.brake();
 car2.accelerate();
 car2.brake();
-*/
 
 // CHALLENGE 2
 class CarCl {
@@ -213,19 +247,19 @@ class CarCl {
     this.make = make;
     this.speed = speed;
   }
-
+  
   accelerate() {
     console.log((this.speed += 10));
   }
-
+  
   brake() {
     console.log((this.speed -= 5));
   }
-
+  
   get speedUS() {
     return this.speed / 1.6;
   }
-
+  
   set speedUS(newSpeed) {
     this.speed = newSpeed * 1.6;
   }
@@ -244,3 +278,5 @@ ford.brake();
 console.log(`car: `, ford);
 console.log(ford.speedUS);
 console.log((ford.speedUS = 120));
+
+// 
