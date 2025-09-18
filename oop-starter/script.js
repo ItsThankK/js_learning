@@ -225,7 +225,54 @@ StudentProto.init = function (firstName, birthYear, course) {
 const jay = Object.create(StudentProto);
 jay.init(`Jay`, 2010, `Computer Sc`);
 
-jay.calcAge()
+jay.calcAge();
+
+// more class examples
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening and account ${owner}`);
+  }
+  // Public interface
+  deposit(val) {
+    this.movements.push(val);
+  }
+
+  withdraw(val) {
+    this.movements.push(-val);
+  }
+
+  approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      
+    }
+  }
+}
+
+const acc1 = new Account(`Jonas`, `EUR`, 1111, []);
+console.log(acc1);
+// Dangerous way
+// acc1.movements.push(250);
+// acc1.movements.push(-140);
+
+// better and safer way - create & call methods
+acc1.deposit(250);
+acc1.withdraw(140);
+console.log(acc1);
+// console.log(acc1.movements.reduce((a, e) => (a += e))); // works
+acc1.requestLoan(100);
+
 
 /**
  * 1. classes are not hoisted
