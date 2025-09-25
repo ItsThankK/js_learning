@@ -49,6 +49,8 @@ getCountryData(`usa`);
 getCountryData(`germany`);
 */
 
+/*
+// callback hell
 const renderCountry = function (data, className = ``) {
   const html = `
     <article class="country ${className}">
@@ -107,3 +109,13 @@ const getCountryNeighbour = function (countryName) {
 // getCountryNeighbour(`nigeria`);
 // getCountryNeighbour(`usa`);
 getCountryNeighbour(`germany`);
+*/
+
+// promises and the fetch api
+// Old way //
+// const request = new XMLHttpRequest();
+// request.open(`GET`, `https://restcountries.com/v3.1/name/${countryName}`);
+// request.send();
+
+const request = fetch(`https://restcountries.com/v3.1/name/nigeria`);
+console.log(request);
