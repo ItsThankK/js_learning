@@ -166,7 +166,38 @@ const getCountryData = function (country) {
       countriesContainer.style.opacity = `1`;
     });
 };
-
+/*
 btn.addEventListener(`click`, function () {
   getCountryData(`australia`);
 });
+*/
+
+// CHALLNEGE 1
+const whereAmI = function (lat, lng) {
+  fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+  )
+    .then(response => {
+      if (!response.ok)
+        throw new Error(
+          `Country not found in this coordinates (${response.status})`
+        );
+      return response.json();
+    })
+    .then(data => {
+      console.log(`You are in ${data.countryName}`);
+      getCountryData(data.countryName);
+    })
+    .catch(err => console.log(err));
+};
+
+btn.addEventListener(`click`, function () {
+  whereAmI(`6.5480551`, `3.239596`);
+});
+
+/*
+`6.5480551`, `3.239596`
+`52.508`, `13.381`
+`19.037`, `72.873` 
+`-33.933`, `18.474`
+*/
