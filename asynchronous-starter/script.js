@@ -136,20 +136,27 @@ getCountryNeighbour(`germany`);
 //     });
 // };
 
+const getJSON = function (url, errorMessage = `Something went wrong`) {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMessage} (${response.status})`);
+    return response.json();
+  });
+};
+
 const getCountryData = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(response => response.json())
+  getJSON(`https://restcountries.com/v3.1/name/${country}`, `Country not found`)
     .then(data => {
       // country 1
       renderCountry(data[0]);
 
       const neighbour = data[0].borders[1];
-      if (!neighbour) return;
-
+      if (!neighbour) throw new Error(`No neighbour found`);
       // country 2
-      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+      return getJSON(
+        `https://restcountries.com/v3.1/alpha/${neighbour}`,
+        `Country not found`
+      );
     })
-    .then(response => response.json())
     .then(data => renderCountry(data[0], `neighbour`))
     .catch(err => {
       console.error(`%c${err} ❌`, `color: blue;`);
@@ -161,5 +168,5 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener(`click`, function () {
-  getCountryData(`nigeria`);
+  getCountryData(`australia`);
 });
