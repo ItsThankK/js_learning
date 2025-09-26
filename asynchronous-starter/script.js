@@ -3,6 +3,10 @@
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText(`beforeend`, msg);
+};
+
 // NEW COUNTRIES API URL (use instead of the URL shown in videos):
 // https://restcountries.com/v2/name/portugal
 
@@ -71,7 +75,6 @@ const renderCountry = function (data, className = ``) {
   `;
 
   countriesContainer.insertAdjacentHTML(`beforeend`, html);
-  countriesContainer.style.opacity = `1`;
 };
 /*
 const getCountryNeighbour = function (countryName) {
@@ -147,6 +150,16 @@ const getCountryData = function (country) {
       return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
     })
     .then(response => response.json())
-    .then(data => renderCountry(data[0], `neighbour`));
+    .then(data => renderCountry(data[0], `neighbour`))
+    .catch(err => {
+      console.error(`%c${err} ❌`, `color: blue;`);
+      renderError(`${err} ❌`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = `1`;
+    });
 };
-getCountryData(`nigeria`);
+
+btn.addEventListener(`click`, function () {
+  getCountryData(`nigeria`);
+});
