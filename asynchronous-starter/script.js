@@ -165,24 +165,49 @@ const getCountryData = function (country) {
     .finally(() => {
       countriesContainer.style.opacity = `1`;
     });
-  };
-  
-  btn.addEventListener(`click`, function () {
-    getCountryData(`nigeria`);
+};
+
+btn.addEventListener(`click`, function () {
+  getCountryData(`nigeria`);
+});
+
+// the event loop in practice
+// console.log(`Test start`);
+// setTimeout(() => {
+//   console.log(`0 sec timer`);
+// }, 0);
+// Promise.resolve(`Resolved promise 1`).then(res => console.log(res));
+// Promise.resolve(`Resolved promise 2`).then(res => {
+//   for (let i = 0; i < 1000000000; i++) {}
+//   console.log(res);
+// });
+// console.log(`Test end`);
+
+// building a simple promise
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log(`Lottery draw is happening 🔮`);
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve(`You WIN 💲`);
+    } else reject(new Error(`You LOST your money 🤡`));
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
   });
-  
-  // the event loop in practice
-  // console.log(`Test start`);
-  // setTimeout(() => {
-  //   console.log(`0 sec timer`);
-  // }, 0);
-  // Promise.resolve(`Resolved promise 1`).then(res => console.log(res));
-  // Promise.resolve(`Resolved promise 2`).then(res => {
-  //   for (let i = 0; i < 1000000000; i++) {}
-  //   console.log(res);
-  // });
-  // console.log(`Test end`);
-  
+};
+wait(5)
+  .then(() => {
+    console.log(`I waited for 2 seconds`);
+    return wait(1);
+  })
+  .then(() => console.log(`I waited for 1 second`));
+
 /*
 // CHALLNEGE 1
 const whereAmI = function (lat, lng) {
