@@ -167,9 +167,9 @@ const getCountryData = function (country) {
     });
 };
 
-btn.addEventListener(`click`, function () {
-  getCountryData(`nigeria`);
-});
+// btn.addEventListener(`click`, function () {
+//   getCountryData(`nigeria`);
+// });
 
 // the event loop in practice
 // console.log(`Test start`);
@@ -224,6 +224,7 @@ btn.addEventListener(`click`, function () {
 //   .catch(err => console.log(err));
 
 // asyn/ await
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     // navigator.geolocation.getCurrentPosition(
@@ -362,7 +363,7 @@ Promise.any([
   Promise.resolve(`another success`),
   Promise.resolve(`Success`),
 ]).then(response => console.log(response));
-
+*/
 /*
 // CHALLNEGE 1
 const whereAmI = function (lat, lng) {
@@ -395,10 +396,11 @@ btn.addEventListener(`click`, function () {
 */
 
 // CHALLENGE 2
-/*
 const wait = function (seconds) {
   return new Promise(function (resolve) {
-    setTimeout(resolve(console.log(`Finished waiting`)), seconds * 1000);
+    setTimeout(() => {
+      resolve(console.log(`Finished waiting`));
+    }, seconds * 1000);
   });
 };
 
@@ -420,7 +422,7 @@ const createImage = function (imgPath) {
 };
 
 let currentImg;
-
+/*
 createImage(`img/img-1.jpg`)
   .then(res => {
     currentImg = res;
@@ -431,7 +433,7 @@ createImage(`img/img-1.jpg`)
     currentImg.style.display = `none`;
     return createImage(`img/img-2.jpg`);
   })
-  .then(res => { 
+  .then(res => {
     currentImg = res;
     console.log(res);
     return wait(5);
@@ -441,3 +443,45 @@ createImage(`img/img-1.jpg`)
   })
   .catch(err => console.error(err));
 */
+
+// CHALLENGE 3
+const loadNPause = async function () {
+  try {
+    let img = await createImage(`img/img-1.jpg`);
+    console.log(img);
+    await wait(5);
+    img.style.display = `none`;
+
+    img = await createImage(`img/img-2.jpg`);
+    console.log(img);
+    await wait(5);
+    img.style.display = `none`;
+
+    img = await createImage(`img/img-3.jpg`);
+    console.log(img);
+    await wait(5);
+    img.style.display = `none`;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const loadAll = async function (imgArr) {
+  try {
+    const imgs = imgArr.map(async img => await createImage(img));
+
+    console.log(imgs);
+
+    const imgEl = await Promise.all(imgs);
+    console.log(imgEl);
+
+    imgEl.forEach(imgEl => imgEl.classList.add(`parallel`));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const imgArr = ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg'];
+
+// loadNPause();
+// loadAll(imgArr);
