@@ -209,6 +209,21 @@ btn.addEventListener(`click`, function () {
 //   .then(() => console.log(`I waited for 1 second`));
 
 // Promisifying the geolocation api
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     // navigator.geolocation.getCurrentPosition(
+//     //   position => resolve(position),
+//     //   err => reject(err)
+//     // );
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
+
+// getPosition()
+//   .then(response => console.log(response))
+//   .catch(err => console.log(err));
+
+// asyn/ await
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     // navigator.geolocation.getCurrentPosition(
@@ -219,9 +234,23 @@ const getPosition = function () {
   });
 };
 
-// getPosition()
-//   .then(response => console.log(response))
-//   .catch(err => console.log(err));
+const whereAmI = async function () {
+  const position = await getPosition();
+  const { latitude: lat, longitude: lng } = position.coords;
+
+  const myCountry = await fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+  );
+  const country = await myCountry.json();
+
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${country.countryName}`
+  );
+  const [data] = await res.json();
+  console.log(data);
+  renderCountry(data);
+};
+whereAmI();
 
 /*
 // CHALLNEGE 1
@@ -255,6 +284,7 @@ btn.addEventListener(`click`, function () {
 */
 
 // CHALLENGE 2
+/*
 const wait = function (seconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve(console.log(`Finished waiting`)), seconds * 1000);
@@ -290,7 +320,7 @@ createImage(`img/img-1.jpg`)
     currentImg.style.display = `none`;
     return createImage(`img/img-2.jpg`);
   })
-  .then(res => {
+  .then(res => { 
     currentImg = res;
     console.log(res);
     return wait(5);
@@ -299,3 +329,4 @@ createImage(`img/img-1.jpg`)
     currentImg.style.display = `none`;
   })
   .catch(err => console.error(err));
+*/
