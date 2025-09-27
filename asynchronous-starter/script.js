@@ -322,6 +322,47 @@ const get3Countries = async function (c1, c2, c3) {
 };
 get3Countries(`nigeria`, `ghana`, `togo`);
 
+// other promise combinators - race, allsettled and any
+// Promise.race
+(async function () {
+  const res = await Promise.race([
+    getJSON2(`https://restcountries.com/v3.1/name/italy`),
+    getJSON2(`https://restcountries.com/v3.1/name/egypt`),
+    getJSON2(`https://restcountries.com/v3.1/name/mexico`),
+  ]);
+
+  console.log(res[0]);
+})();
+
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(() => {
+      reject(`Request took too long`);
+    }, sec * 1000);
+  });
+};
+
+Promise.race([
+  getJSON2(`https://restcountries.com/v3.1/name/egypt`),
+  timeout(1),
+])
+  .then(response => console.log(response[0]))
+  .catch(err => console.error(err));
+
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve(`Success`),
+  Promise.reject(`error`),
+  Promise.resolve(`another success`),
+]).then(response => console.log(...response));
+
+// Promise.any
+Promise.any([
+  Promise.reject(`error`),
+  Promise.resolve(`another success`),
+  Promise.resolve(`Success`),
+]).then(response => console.log(response));
+
 /*
 // CHALLNEGE 1
 const whereAmI = function (lat, lng) {
