@@ -295,6 +295,33 @@ console.log(`1: Will get location`);
   }
 })();
 
+// Running promises in parallel
+const getJSON2 = function (url, errorMessage = `Something went wrong`) {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMessage} (${response.status})`);
+    return response.json();
+  });
+};
+
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    // Makes no sense to run in serial!
+    // const [data1] = await getJSON2(`https://restcountries.com/v3.1/name/${c1}`);
+    // const [data2] = await getJSON2(`https://restcountries.com/v3.1/name/${c2}`);
+    // const [data3] = await getJSON2(`https://restcountries.com/v3.1/name/${c3}`);
+
+    const data = await Promise.all([
+      getJSON2(`https://restcountries.com/v3.1/name/${c1}`),
+      getJSON2(`https://restcountries.com/v3.1/name/${c2}`),
+      getJSON2(`https://restcountries.com/v3.1/name/${c3}`),
+    ]);
+    console.log(data.map(d => d[0].capital[0]));
+  } catch (error) {
+    console.log(error);
+  }
+};
+get3Countries(`nigeria`, `ghana`, `togo`);
+
 /*
 // CHALLNEGE 1
 const whereAmI = function (lat, lng) {
