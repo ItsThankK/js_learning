@@ -252,11 +252,16 @@ const whereAmI = async function () {
 
     const [data] = await res.json();
     renderCountry(data);
+
+    return `You are in ${data.capital[0]}, ${country.countryName}`;
   } catch (err) {
     console.error(new Error(`Something went wrong ${err.message}`));
+
+    // Reject promise returned from asyc function
+    throw err;
   }
 };
-whereAmI();
+// whereAmI();
 
 // // try...catch
 // try {
@@ -266,6 +271,29 @@ whereAmI();
 // } catch (err) {
 //   console.error(err.message);
 // }
+
+// Returning values from async functions
+console.log(`1: Will get location`);
+// This won't work 👇
+// const city = whereAmI();
+// console.log(city);
+
+// This works 👇
+// whereAmI()
+// .then(response => console.log(response))
+// .catch(err => console.error(err.message))
+// .finally(() => console.log(`3: Finished getting location`));
+
+(async function () {
+  try {
+    const f = await whereAmI();
+    console.log(f);
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    console.log(`3: Finished getting location`);
+  }
+})();
 
 /*
 // CHALLNEGE 1
