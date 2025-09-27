@@ -184,29 +184,44 @@ btn.addEventListener(`click`, function () {
 // console.log(`Test end`);
 
 // building a simple promise
-const lotteryPromise = new Promise(function (resolve, reject) {
-  console.log(`Lottery draw is happening 🔮`);
-  setTimeout(() => {
-    if (Math.random() >= 0.5) {
-      resolve(`You WIN 💲`);
-    } else reject(new Error(`You LOST your money 🤡`));
-  }, 2000);
-});
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//   console.log(`Lottery draw is happening 🔮`);
+//   setTimeout(() => {
+//     if (Math.random() >= 0.5) {
+//       resolve(`You WIN 💲`);
+//     } else reject(new Error(`You LOST your money 🤡`));
+//   }, 2000);
+// });
 
-lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
 // Promisifying setTimeout
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+// wait(5)
+//   .then(() => {
+//     console.log(`I waited for 2 seconds`);
+//     return wait(1);
+//   })
+//   .then(() => console.log(`I waited for 1 second`));
+
+// Promisifying the geolocation api
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
-wait(5)
-  .then(() => {
-    console.log(`I waited for 2 seconds`);
-    return wait(1);
-  })
-  .then(() => console.log(`I waited for 1 second`));
+
+getPosition()
+  .then(response => console.log(response))
+  .catch(err => console.log(err));
 
 /*
 // CHALLNEGE 1
@@ -238,3 +253,6 @@ btn.addEventListener(`click`, function () {
 `19.037`, `72.873` 
 `-33.933`, `18.474`
 */
+
+// CHALLENGE 2
+
