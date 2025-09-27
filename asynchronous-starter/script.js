@@ -219,9 +219,9 @@ const getPosition = function () {
   });
 };
 
-getPosition()
-  .then(response => console.log(response))
-  .catch(err => console.log(err));
+// getPosition()
+//   .then(response => console.log(response))
+//   .catch(err => console.log(err));
 
 /*
 // CHALLNEGE 1
@@ -255,4 +255,47 @@ btn.addEventListener(`click`, function () {
 */
 
 // CHALLENGE 2
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve(console.log(`Finished waiting`)), seconds * 1000);
+  });
+};
 
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+    img.setAttribute(`src`, imgPath);
+
+    img.addEventListener(`load`, function () {
+      document.querySelector(`.images`).append(img);
+
+      resolve(img);
+    });
+
+    img.addEventListener(`error`, function () {
+      reject(new Error(`Image failed to load`));
+    });
+  });
+};
+
+let currentImg;
+
+createImage(`img/img-1.jpg`)
+  .then(res => {
+    currentImg = res;
+    console.log(res);
+    return wait(5);
+  })
+  .then(() => {
+    currentImg.style.display = `none`;
+    return createImage(`img/img-2.jpg`);
+  })
+  .then(res => {
+    currentImg = res;
+    console.log(res);
+    return wait(5);
+  })
+  .then(() => {
+    currentImg.style.display = `none`;
+  })
+  .catch(err => console.error(err));
