@@ -37,7 +37,7 @@ console.log(lastPost);
 
 import shoppingCart, { addToCart } from './shoppingCart';
 */
-
+/*
 // The module pattern
 const ShoppingCart2 = (function () {
   const cart = [];
@@ -65,3 +65,14 @@ const ShoppingCart2 = (function () {
 
 ShoppingCart2.addToCart(`apple`, 4);
 ShoppingCart2.addToCart(`pizza`, 2);
+*/
+/*
+// commonjs modules - works in nodejs
+// Export
+export.addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} added to cart`);
+};
+// Import
+const {addToCart} = require('./shoppingCart.js')
+*/
