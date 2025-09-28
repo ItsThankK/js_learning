@@ -1,4 +1,3 @@
-/*
 // Importing module
 // import { addToCart, totalPrice as price, tq } from './shoppingCart.js';
 
@@ -32,12 +31,11 @@ const getLastPost = async function () {
   return { title: data.at(-1).title, text: data.at(-1).body };
 };
 
-const lastPost = await getLastPost();
-console.log(lastPost);
+// const lastPost = await getLastPost();
+// console.log(lastPost);
 
 import shoppingCart, { addToCart } from './shoppingCart';
-*/
-/*
+
 // The module pattern
 const ShoppingCart2 = (function () {
   const cart = [];
@@ -65,7 +63,7 @@ const ShoppingCart2 = (function () {
 
 ShoppingCart2.addToCart(`apple`, 4);
 ShoppingCart2.addToCart(`pizza`, 2);
-*/
+
 /*
 // commonjs modules - works in nodejs
 // Export
@@ -77,7 +75,8 @@ export.addToCart = function (product, quantity) {
 const {addToCart} = require('./shoppingCart.js')
 */
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -89,7 +88,11 @@ const state = {
 
 const stateClone = cloneDeep(state);
 console.log(stateClone);
-stateClone.cart[0].quantity = 0;
 
 console.log(state);
 console.log(stateClone);
+
+// Prevent page reload by parcel!!!
+if (module.hot) {
+  module.hot.accept();
+}
