@@ -96,3 +96,7 @@ console.log(stateClone);
 if (module.hot) {
   module.hot.accept();
 }
+
+import 'core-js/stable';
+// polyfilling async functions
+import 'regenerator-runtime/runtime';
