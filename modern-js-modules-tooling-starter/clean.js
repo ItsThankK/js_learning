@@ -68,3 +68,4 @@ const logBigExpenses = function (bigLimit) {
 };
 
 logBigExpenses(1000);
+
