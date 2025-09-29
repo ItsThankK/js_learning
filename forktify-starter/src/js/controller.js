@@ -12,3 +12,33 @@ const timeout = function (s) {
 // https://forkify-api.jonas.io
 
 ///////////////////////////////////////
+
+const showRecipe = async function () {
+  try {
+    const res = await fetch(
+      `https://forkify-api.jonas.io/api/v2/recipes/664c8f193e7aa067e94e86b9`
+    );
+    const data = await res.json();
+    let { recipe } = data.data;
+
+    recipe = {
+      id: recipe.id,
+      title: recipe.title,
+      publisher: recipe.publisher,
+      sourceUrl: recipe.source_url,
+      image: recipe.image_url,
+      servings: recipe.servings,
+      cookingTime: recipe.cooking_time,
+      ingredients: recipe.ingredients,
+    };
+    console.log(recipe);
+
+    if (!res.ok)
+      throw new Error(
+        `STATUS: [${data.status}] STATUS-CODE: [${res.status}] MESSAGE: [${data.message}]`
+      );
+  } catch (error) {
+    console.error(error);
+  }
+};
+showRecipe();
