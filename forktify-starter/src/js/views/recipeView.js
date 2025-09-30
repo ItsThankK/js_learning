@@ -4,8 +4,8 @@ import Fraction from 'fraction.js';
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
-  #errorMessage = `We couldn't find the recipe. Please try another one!`
-  #message = ``
+  #errorMessage = `We couldn't find the recipe. Please try another one!`;
+  #message = ``;
 
   render(data) {
     this.#data = data;
