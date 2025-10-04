@@ -59,7 +59,8 @@ const controlServings = function(newServings) {
   // Update the recipe servings (in state)
   model.updateServings(newServings)
   // Update the recipe 
-  recipeView.render(model.state.recipe);
+  // recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 }
 
 // event handling - publisher - subscriber design
